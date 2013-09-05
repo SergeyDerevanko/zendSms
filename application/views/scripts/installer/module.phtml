@@ -1,0 +1,26 @@
+<?php $models = $this->models; ?>
+<?php $controllers = $this->controllers; ?>
+
+<h1>CONTROLLERS</h1>
+<ul>
+<?php foreach($controllers as $_controller) {?>
+     <li><?php echo $_controller->getName(); ?></li>
+<?php }?>
+</ul>
+<form method="post" action="#">
+    <input name="controller_name" value="">
+    <input type="submit" value="add controller">
+</form>
+
+
+<h1>MODELS</h1>
+<ul>
+    <?php foreach($models as $_model) {?>
+    <li><?php echo $_model->getName(); ?></li>
+    <?php }?>
+</ul>
+<form method="post" action="#">
+    <input name="model_name" value="">
+    <input type="submit" value="add model">
+</form>
+

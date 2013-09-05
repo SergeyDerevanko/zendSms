@@ -1,6 +1,6 @@
 <?php
 
-class Ssersh_Lib_Url
+class Ikantam_Lib_Url
 {
 
     static function getBaseUrl($view, $configPath = true)

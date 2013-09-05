@@ -5,6 +5,7 @@ class Application_Model_DbFactory
 
 	private static $_factory;
 	private $_dbh;
+    private $_config;
 
 	/**
 	 * 
@@ -28,7 +29,9 @@ class Application_Model_DbFactory
 	{
 		if (!$this->_dbh) {
 			$paramName = 'params' . $subconnection;
-			$this->_config = Zend_Registry::get('config')->resources->db->$paramName;
+
+            $this->_config = new Zend_Config_Xml( APPLICATION_PATH.'/configs/db.xml', 'default');
+
 			$dsn = $this->getDsn();
 			$user = $this->getUsername();
 			$password = $this->getPassword();
@@ -45,24 +48,24 @@ class Application_Model_DbFactory
 		return $this->_dbh;
 	}
 
-	protected function getDsn()
-	{
+
+	protected function getDsn(){
 		return sprintf('mysql:dbname=%s;host=%s', $this->_config->dbname, $this->_config->host);
 	}
 
-	protected function getUsername()
-	{
+
+	protected function getUsername(){
 		return $this->_config->username;
 	}
 
-	protected function getPassword()
-	{
+
+	protected function getPassword(){
 		return $this->_config->password;
 	}
 
-	protected function logException($exc)
-	{
-		//echo 'Connection failed: ' . $e->getMessage(); //@TODO change this!!!
+
+	protected function logException($exc){
+
 	}
 
 }

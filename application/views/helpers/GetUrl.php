@@ -7,7 +7,7 @@ class Zend_View_Helper_GetUrl extends Zend_View_Helper_Abstract
 
 
     public function __construct(){
-        $this->lib_url = new Ssersh_Lib_Url();
+        $this->lib_url = new Ikantam_Lib_Url();
     }
 
 

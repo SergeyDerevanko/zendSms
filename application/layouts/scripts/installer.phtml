@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headMeta();  ?>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script> var publicUrl = '<?php echo $this->getPublicUrl(); ?>'</script>
+    <?php echo $this->headLink(); ?>
+    <?php echo $this->headScript(); ?>
+</head>
+
+<body>
+
+<?php $active = $this->getControllerName(); ?>
+<div class="container">
+
+    <?php echo $this->layout()->content ; ?>
+</div>
+</body>
+
+</html>
