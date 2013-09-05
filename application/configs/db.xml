@@ -1,12 +1,10 @@
 <?xml version='1.0'?>
 <configdata>
-    <config>default</config>
     <default>
-        <adapter>PDO_MYSQL</adapter>
+        <adapter>pdo_mysql</adapter>
         <host>localhost</host>
         <username>root</username>
         <password></password>
-        <dbname>rentrascal</dbname>
-        <charset>utf8</charset>
+        <dbname>testbd</dbname>
     </default>
 </configdata>
