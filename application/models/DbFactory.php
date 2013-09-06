@@ -3,16 +3,17 @@
 class Application_Model_DbFactory
 {
 
+<<<<<<< HEAD
 	private static $_factory;
 	private $_dbh;
     private $_config;
+=======
+	private static $_db;
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
 
-	/**
-	 * 
-	 * @return Application_Model_DbFactory
-	 */
-	public static function getFactory()
+	public static function getConnect()
 	{
+<<<<<<< HEAD
 		if (!self::$_factory) {
 			self::$_factory = new self();
 		}
@@ -66,6 +67,21 @@ class Application_Model_DbFactory
 
 	protected function logException($exc){
 
-	}
+=======
+		if (!self::$_db) {
+            $cfg = new Zend_Config_Xml(APPLICATION_PATH.'/configs/db.xml', 'default');
 
+            $config = array(
+                'host'     => $cfg->host,
+                'dbname' => $cfg->dbname,
+                'username' => $cfg->username,
+                'password' => $cfg->password,
+
+            );
+
+			self::$_db = Zend_Db::factory($cfg->adapter, $config);
+		}
+		return self::$_db;
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
+	}
 }

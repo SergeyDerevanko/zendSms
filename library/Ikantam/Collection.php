@@ -246,6 +246,7 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
         return $this;
     }
 
+<<<<<<< HEAD
 
 	/** Merge this collection with other.  This method does not change original collection!
      * 
@@ -297,4 +298,6 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
         
     }
 
+=======
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
 }

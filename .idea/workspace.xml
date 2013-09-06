@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64117430-afdd-45e2-9ba9-e3371c51e612" name="Default" comment="" />
-    <ignored path="zendSms.iws" />
+    <list default="true" id="0a5190a8-c03d-450f-a96d-3a694243fbbd" name="Default" comment="" />
+    <ignored path="ZendSms.iws" />
     <ignored path=".idea/workspace.xml" />
+    <file path="/IndexController.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378414890608" ignored="false" />
+    <file path="/application.ini" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378407787957" ignored="false" />
+    <file path="/Abstract.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378419323562" ignored="false" />
+    <file path="/Test.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378419117673" ignored="false" />
+    <file path="/Bootstrap.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378409203165" ignored="false" />
+    <file path="/DbFactory.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378418430096" ignored="false" />
+    <file path="/Url.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378416398540" ignored="false" />
+    <file path="/DbController.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378419192974" ignored="false" />
+    <file path="/GetRouteUrl.php" changelist="0a5190a8-c03d-450f-a96d-3a694243fbbd" time="1378420798524" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,17 +27,55 @@
     <disable_hints />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ZendSms" />
+  </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< HEAD
       <file leaf-file-name="DbFactory.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/DbFactory.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="27" selection-start="109" selection-end="109" vertical-scroll-proportion="-2.6666667">
+=======
+      <file leaf-file-name="Url.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/library/Ikantam/Lib/Url.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="24" selection-start="120" selection-end="120" vertical-scroll-proportion="1.3076923">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="GetRouteUrl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/helpers/GetRouteUrl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="44" selection-start="174" selection-end="189" vertical-scroll-proportion="-5.8846154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetPublicUrl.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/helpers/GetPublicUrl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="44" selection-start="190" selection-end="190" vertical-scroll-proportion="-5.8846154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetModuleName.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/helpers/GetModuleName.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="InstallerController.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/controllers/InstallerController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -60,6 +107,12 @@
         <entry file="file://$PROJECT_DIR$/application/Bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="7" column="94" selection-start="203" selection-end="273" vertical-scroll-proportion="-4.576923">
+=======
+      <file leaf-file-name="GetUrl.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/helpers/GetUrl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="0" selection-start="194" selection-end="194" vertical-scroll-proportion="0.3631068">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
               <folding />
             </state>
           </provider>
@@ -72,6 +125,7 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+<<<<<<< HEAD
   <component name="Git.Settings">
     <option name="SYNC_SETTING" value="DONT" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,15 +149,36 @@
         <option value="$PROJECT_DIR$/application/controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/application/models/DbFactory.php" />
         <option value="$PROJECT_DIR$/application/controllers/InstallerController.php" />
+=======
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/application/models/Test.php" />
+        <option value="$PROJECT_DIR$/application/controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/library/Ikantam/Collection.php" />
+        <option value="$PROJECT_DIR$/library/Ikantam/Lib/Url.php" />
+        <option value="$PROJECT_DIR$/library/Ikantam/Controller/Admin/Abstract.php" />
+        <option value="$PROJECT_DIR$/application/configs/application.ini" />
+        <option value="$PROJECT_DIR$/application/configs/db.xml" />
+        <option value="$PROJECT_DIR$/application/models/DbFactory.php" />
+        <option value="$PROJECT_DIR$/application/models/Backend/Abstract.php" />
+        <option value="$PROJECT_DIR$/application/models/Collections/Test.php" />
+        <option value="$PROJECT_DIR$/application/controllers/DbController.php" />
+        <option value="$PROJECT_DIR$/application/models/Abstract.php" />
+        <option value="$PROJECT_DIR$/application/models/Collections/Abstract.php" />
+        <option value="$PROJECT_DIR$/application/views/helpers/GetRouteUrl.php" />
+        <option value="$PROJECT_DIR$/application/views/helpers/GetPublicUrl.php" />
+        <option value="$PROJECT_DIR$/application/views/helpers/GetUrl.php" />
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="1" />
+    <option name="y" value="1" />
+    <option name="width" value="1364" />
+    <option name="height" value="726" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -173,6 +248,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Ikantam" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -187,6 +282,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="helpers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
               <option name="myItemId" value="application" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -209,7 +345,76 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+<<<<<<< HEAD
+=======
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Collections" />
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="controllers" />
+=======
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Backend" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="zendSms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="configs" />
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -221,63 +426,42 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="project.propVCSSupport.VCSs.Git" />
-    <property name="last_opened_file_path" value="D:/work/phil last/сервер" />
+    <property name="options.lastSelected" value="preferences.updates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ZendSms1" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
-      <method />
-    </configuration>
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="DETECT_NESTED_COPIES" value="true" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="64117430-afdd-45e2-9ba9-e3371c51e612" name="Default" comment="" />
-      <created>1378278930537</created>
-      <updated>1378278930537</updated>
+      <changelist id="0a5190a8-c03d-450f-a96d-3a694243fbbd" name="Default" comment="" />
+      <created>1378407634037</created>
+      <updated>1378407634037</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="1" y="1" width="1364" height="726" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2439394" sideWeight="0.6712329" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25729647" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32876712" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -308,13 +492,20 @@
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
     <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
-    <option name="SHORT_DIFF_HORISONTALLY" value="true" />
+    <option name="SHORT_DIFF_HORIZONTALLY" value="true" />
     <option name="SHORT_DIFF_EXTRA_LINES" value="2" />
     <option name="SOFT_WRAPS_IN_SHORT_DIFF" value="true" />
     <option name="INCLUDE_TEXT_INTO_PATCH" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="SHOW_FILE_HISTORY_DETAILS" value="true" />
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
+    <option name="SHOW_DIRTY_RECURSIVELY" value="false" />
+    <option name="LIMIT_HISTORY" value="true" />
+    <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
+    <option name="UPDATE_FILTER_SCOPE_NAME" />
+    <option name="USE_COMMIT_MESSAGE_MARGIN" value="false" />
+    <option name="COMMIT_MESSAGE_MARGIN_SIZE" value="72" />
+    <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
@@ -328,6 +519,7 @@
     <option name="ACTIVE_VCS_NAME" />
     <option name="UPDATE_GROUP_BY_PACKAGES" value="false" />
     <option name="UPDATE_GROUP_BY_CHANGELIST" value="false" />
+    <option name="UPDATE_FILTER_BY_SCOPE" value="false" />
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
@@ -335,66 +527,130 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/application/views/scripts/index/index.phtml">
+=======
+    <entry file="file://$PROJECT_DIR$/../cammeron911.com/library/Ikantam/Controller/Front.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="29" selection-start="4" selection-end="4" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetUrl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="43" selection-start="183" selection-end="183" vertical-scroll-proportion="0.28705442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetRouteUrl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="43" selection-start="188" selection-end="188" vertical-scroll-proportion="0.28705442" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetPublicUrl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="41" selection-start="199" selection-end="199" vertical-scroll-proportion="0.35084426" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/layouts/scripts/layout.phtml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="0.60600376" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/ErrorController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="34" selection-start="96" selection-end="101" vertical-scroll-proportion="0.15947467">
+        <state line="124" column="42" selection-start="5316" selection-end="5328" vertical-scroll-proportion="0.28721175">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../cameroon911.com/application/configs/application.ini">
+    <entry file="file://$PROJECT_DIR$/library/Ikantam/Controller/Admin.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="681" selection-end="752" vertical-scroll-proportion="0.6994633">
+        <state line="2" column="43" selection-start="50" selection-end="50" vertical-scroll-proportion="0.067729086">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/IndexController.php">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetUrl.php">
+=======
+    <entry file="file://$PROJECT_DIR$/application/models/Collections/Abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="35" selection-start="471" selection-end="471" vertical-scroll-proportion="0.17408907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Collections/Test.php">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="7" selection-end="7" vertical-scroll-proportion="0.06882591">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/DbController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="33" selection-start="280" selection-end="280" vertical-scroll-proportion="0.4621359">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="52" selection-start="264" selection-end="264" vertical-scroll-proportion="0.4291262">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/application/layouts/scripts/layout.phtml">
+=======
+    <entry file="file://$PROJECT_DIR$/application/models/DbFactory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="53" selection-start="181" selection-end="181" vertical-scroll-proportion="0.33009708">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/Backend/Abstract.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="42" selection-start="1975" selection-end="1975" vertical-scroll-proportion="2.8718448">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/configs/application.ini">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="49" selection-start="658" selection-end="658" vertical-scroll-proportion="0.608229">
+        <state line="14" column="64" selection-start="517" selection-end="517" vertical-scroll-proportion="0.43992606">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/admin/views/scripts/index/index.phtml">
+    <entry file="file://$PROJECT_DIR$/application/configs/db.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="17" selection-start="11" selection-end="11" vertical-scroll-proportion="-0.0">
+        <state line="2" column="12" selection-start="40" selection-end="47" vertical-scroll-proportion="0.06284658">
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/library/Ikantam/Lib/Url.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="24" selection-start="120" selection-end="120" vertical-scroll-proportion="1.3076923">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetRouteUrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="44" selection-start="174" selection-end="189" vertical-scroll-proportion="-5.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetPublicUrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="44" selection-start="190" selection-end="190" vertical-scroll-proportion="-5.8846154">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/application/modules/admin/controllers/IndexController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="27" selection-start="117" selection-end="117" vertical-scroll-proportion="0.15947467">
+=======
+    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetModuleName.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/application/configs/db.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="12" selection-start="40" selection-end="47" vertical-scroll-proportion="0.0">
@@ -426,6 +682,11 @@
     <entry file="file://$PROJECT_DIR$/application/controllers/InstallerController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="50" column="0" selection-start="1265" selection-end="1265" vertical-scroll-proportion="0.86923075">
+=======
+    <entry file="file://$PROJECT_DIR$/application/views/helpers/GetUrl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="194" selection-end="194" vertical-scroll-proportion="0.3631068">
+>>>>>>> aad719df3ef0b855639e46632dbfd286be79e60e
           <folding />
         </state>
       </provider>
