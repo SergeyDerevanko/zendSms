@@ -94,4 +94,17 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
     }
 
 
+    public function count(){
+        return count($this->_items);
+    }
+
+
+    /**
+     * Implementation of IteratorAggregate::getIterator()
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->_items);
+    }
+
 }

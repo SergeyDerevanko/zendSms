@@ -1,11 +1,16 @@
 <?php
 
-class InstallerController extends Zend_Controller_Action
+class InstallerController extends Ikantam_Controller_Front
 {
+    protected $_installer;
 
     public function init()
     {
         $this->_helper->layout->setLayout('installer');
+        $this->_installer = new Ikantam_Lib_Installer();
+        $this->view->menu = array(
+            'modules' => $this->getUrl('installer/modules')
+        );
     }
 
 
@@ -13,12 +18,11 @@ class InstallerController extends Zend_Controller_Action
     {
         print 'installer';
            exit;
-
     }
 
 
     public function modulesAction(){
-        $explorer = new Ikantam_Lib_Installer();
+        $explorer = $this->_installer->factory('StructGen');
 
         $moduleName = $this->getParam('module_name', false);
         if($moduleName){
@@ -29,9 +33,9 @@ class InstallerController extends Zend_Controller_Action
 
 
     public function moduleAction(){
-        $moduleName = $this->getParam('name');
+        $moduleName = ucfirst($this->getParam('name'));
 
-        $explorer = new Ikantam_Lib_Installer();
+        $explorer = $this->_installer->factory('StructGen');
 
         $controllerName = $this->getParam('controller_name', false);
 
@@ -40,8 +44,9 @@ class InstallerController extends Zend_Controller_Action
         }
 
         $modelName = $this->getParam('model_name', false);
+
         if($modelName){
-            $this->createModel($moduleName, $modelName);
+            $explorer->createModel($moduleName, $modelName);
         }
 
         $this->view->controllers = $explorer->getListController($moduleName);

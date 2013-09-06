@@ -13,9 +13,12 @@
 
 <body>
 
-<?php $active = $this->getControllerName(); ?>
 <div class="container">
-
+    <div>
+        <?php foreach($this->menu as $key=>$a){?>
+            <a style="margin-right: 20px;" href="<?php echo $a; ?>"><?php echo $key?></a>
+        <?php }?>
+    </div>
     <?php echo $this->layout()->content ; ?>
 </div>
 </body>

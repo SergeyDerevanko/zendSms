@@ -31,7 +31,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $resource = $this->getPluginResource('db');
         Zend_Registry::set('db', $resource->getDbAdapter());
     }
-    
+
 
     
     protected function _initActionHelpers()

@@ -1,8 +1,8 @@
 <?php
 
-class Application_Model_DbFactory{
-
-	private static $_db;
+class Ikantam_Db
+{
+    private static $_db;
 
     public static function getConnect(){
         if (!self::$_db) {

@@ -1,13 +1,12 @@
 <?php
 
-abstract class Application_Model_Collections_Abstract extends Ikantam_Collection
+abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
 {
 
 	protected $_classBackend = null;
     protected $_classItem = null;
 
 	public function __construct(){
-
         $className = explode('_', get_class($this));
 
         $this->_classBackend =  $className[0] . '_Model_Backend_' . end($className);

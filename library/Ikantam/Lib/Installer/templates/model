@@ -1,0 +1,5 @@
+<?php
+    class {$moduleNameB}_Model_{$modelNameB}  extends Ikantam_Model_Model_Abstract{
+
+
+}

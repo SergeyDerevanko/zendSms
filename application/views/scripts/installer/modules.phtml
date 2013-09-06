@@ -3,11 +3,11 @@
 <h1>MODULES</h1>
 <ul>
 <?php foreach($modules as $_modul) {?>
-     <li><?php echo $_modul->getName(); ?><a href="<?php echo $this->getUrl('installer/module', array('name' => $_modul->getName()))?>">>></a></li>
+     <li><?php echo $_modul->getName(); ?> <a href="<?php echo $this->getUrl('installer/module', array('name' => $_modul->getName()))?>">Edit</a></li>
 <?php }?>
 </ul>
 <form method="post" action="#">
-    <input name="module_name" value="">
-    <input type="submit" value="add module">
+    New: <input name="module_name" value="">
+    <input type="submit" value="add">
 </form>
 
