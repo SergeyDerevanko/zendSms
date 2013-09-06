@@ -14,10 +14,9 @@ abstract class Application_Model_Abstract extends Ikantam_Object
         $className = explode('_', get_class($this));
         $this->_classBackend = 'Application_Model_Backend_' . end($className);
 
-        /*if (is_numeric($id)) {
+        if (is_numeric($id)) {
             $this->getById($id);
-        }*/
-
+        }
     }
 
 
