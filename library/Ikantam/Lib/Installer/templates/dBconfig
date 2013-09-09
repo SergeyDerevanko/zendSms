@@ -1,0 +1,8 @@
+<{nameConf}>
+        <adapter>{adapter}</adapter>
+        <host>{host}</host>
+        <username>{username}</username>
+        <password>{password}</password>
+        <dbname>{dbname}</dbname>
+</{nameConf}>
+<!-- insert -->

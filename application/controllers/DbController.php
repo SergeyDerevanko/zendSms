@@ -10,9 +10,7 @@ class DbController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $test = new Application_Model_Collections_Test();
 
-        print_r($test->getAll());
         exit;
     }
 }

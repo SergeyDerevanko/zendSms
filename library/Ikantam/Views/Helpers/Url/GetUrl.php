@@ -1,6 +1,6 @@
 <?php
 
-class Zend_View_Helper_GetUrl extends Zend_View_Helper_Abstract
+class Ikantam_View_Helper_Url_GetUrl extends Zend_View_Helper_Abstract
 {
     private $lib_url = null;
 

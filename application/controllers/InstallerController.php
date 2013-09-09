@@ -17,6 +17,7 @@ class InstallerController extends Ikantam_Controller_Front
     public function indexAction()
     {
         print 'installer';
+        new Ikantam_View_Helper_GetPublicUrl();
            exit;
     }
 
@@ -54,6 +55,24 @@ class InstallerController extends Ikantam_Controller_Front
     }
 
 
+    public function dbAction(){
+        $configName = 'default';
+        $explorer = $this->_installer->factory('Db');
+
+
+        if($this->getRequest()->isPost()){
+            $explorer->setConfig(
+                $this->getParam('adapter', ''),
+                $this->getParam('host', ''),
+                $this->getParam('username', ''),
+                $this->getParam('password', ''),
+                $this->getParam('dbname', ''),
+                $configName);
+        }
+
+        $conf = $explorer->getConfig($configName);
+        $this->view->dbConfig = $conf;
+    }
 
 
 

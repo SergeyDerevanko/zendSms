@@ -1,18 +1,20 @@
 <?php
 
-class Zend_View_Helper_GetPublicUrl extends Zend_View_Helper_Abstract
+
+class Ikantam_View_Helper_Url_GetPublicUrl extends Zend_View_Helper_Abstract
 {
     private $lib_url = null;
 
 
 
     public function __construct(){
+
         $this->lib_url = new Ikantam_Lib_Url();
     }
 
 
 
-    function GetPublicUrl($path = ''){
+    function getPublicUrl($path = ''){
         return $this->lib_url->getPublicUrl($path);
     }
 }

@@ -4,7 +4,7 @@
  * Person title helper
  *
  */
-class Zend_View_Helper_GetActionName extends Zend_View_Helper_Abstract
+class Ikantam_View_Helper_Mca_GetActionName extends Zend_View_Helper_Abstract
 {
     public function getActionName()
     {

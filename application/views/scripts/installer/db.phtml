@@ -1,0 +1,14 @@
+<?php $dbConfig = $this->dbConfig; ?>
+<?php $controllers = $this->controllers; ?>
+
+<h1>DB CONFIG</h1>
+<ul>
+<form method="post" action="#">
+    Adapter : <br><input type="text" name="adapter" value="<?php echo $dbConfig->adapter; ?>"><br><br>
+    Host : <br><input type="text" name="host" value="<?php echo $dbConfig->host; ?>"><br><br>
+    Username : <br><input type="text" name="username" value="<?php echo $dbConfig->username; ?>"><br><br>
+    Password :<br> <input type="text" name="password" value="<?php echo $dbConfig->password; ?>"><br><br>
+    DbName : <br><input type="text" name="dbname" value="<?php echo $dbConfig->dbname; ?>"><br><br>
+
+    <input type="submit" value="save">
+</form>

@@ -66,7 +66,7 @@ class Ikantam_Lib_Explorer_File
 
 
     private function _put($string = ''){
-        return file_put_contents($this->_path, $string, FILE_APPEND | LOCK_EX);
+        return file_put_contents($this->_path, $string, LOCK_EX);
     }
 
 
