@@ -1,0 +1,11 @@
+<?xml version='1.0'?>
+<configdata>
+    <default>
+        <adapter>pdo_mysql</adapter>
+        <host>localhost</host>
+        <username></username>
+        <password></password>
+        <dbname></dbname>
+</default>
+<!-- insert -->
+</configdata>

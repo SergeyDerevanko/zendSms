@@ -9,7 +9,8 @@ class InstallerController extends Ikantam_Controller_Front
         $this->_helper->layout->setLayout('installer');
         $this->_installer = new Ikantam_Lib_Installer();
         $this->view->menu = array(
-            'modules' => $this->getUrl('installer/modules')
+            'modules' => $this->getUrl('installer/modules'),
+            'db' => $this->getUrl('installer/db')
         );
     }
 
