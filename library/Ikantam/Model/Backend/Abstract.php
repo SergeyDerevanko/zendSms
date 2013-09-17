@@ -64,21 +64,21 @@ abstract class Ikantam_Model_Model_Backend_Abstract
     }
 
 
-    public function fetchAll(\Application_Model_Collections_Abstract $object, $select){
+    public function fetchAll(\Ikantam_Model_Collections_Abstract $object, $select){
         $rows = $this->findAll($select);
         if($rows)
             $object->addData($rows);
     }
 
 
-    public function fetch(\Application_Model_Abstract $object, $select){
+    public function fetch(\Ikantam_Model_Abstract $object, $select){
         $row = $this->find($select);
         if($row)
             $object->setData($row);
     }
 
 
-    public function getById(\Application_Model_Abstract $object, $id){
+    public function getById(\Ikantam_Model_Abstract $object, $id){
         $select = $this
             ->select()
             ->where('id = ?', $id);
@@ -87,7 +87,7 @@ abstract class Ikantam_Model_Model_Backend_Abstract
     }
 
 
-    public function getAll(\Application_Model_Collections_Abstract $object){
+    public function getAll(\Ikantam_Model_Collections_Abstract $object){
         $select = $this
             ->select();
 
@@ -95,7 +95,7 @@ abstract class Ikantam_Model_Model_Backend_Abstract
     }
 
 
-    public function insert(\Application_Model_Abstract $object){
+    public function insert(\Ikantam_Model_Abstract $object){
         $db = $this->getDb();
         $data = $this->_clearData($object);
         $db->insert($this->getTable(), $data);
@@ -103,14 +103,14 @@ abstract class Ikantam_Model_Model_Backend_Abstract
     }
 
 
-    public function update(\Application_Model_Abstract $object){
+    public function update(\Ikantam_Model_Abstract $object){
         $db = $this->getDb();
         $data = $this->_clearData($object);
         $db->update($this->getTable(), $data, 'id=' . $object->getId());
     }
 
 
-    public function delete(\Application_Model_Abstract $object){
+    public function delete(\Ikantam_Model_Abstract $object){
         $db = $this->getDb();
         $db->delete($this->getTable(), 'id = ' . $object->getId());
     }
@@ -118,7 +118,7 @@ abstract class Ikantam_Model_Model_Backend_Abstract
 
 
     /* PRIVATE FUNCTION */
-    private function _clearData(\Application_Model_Abstract $object){
+    private function _clearData(\Ikantam_Model_Abstract $object){
         $_data = array();
         foreach($object->getData() as $index => $value){
             if(in_array($index, $this->describeTable()))
