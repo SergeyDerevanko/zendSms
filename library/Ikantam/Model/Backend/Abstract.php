@@ -1,6 +1,6 @@
 <?php
 
-abstract class Ikantam_Model_Backend_Abstract
+abstract class Ikantam_Model_Model_Backend_Abstract
 {
     protected $db = null;
     static $_describe = array();
@@ -11,7 +11,7 @@ abstract class Ikantam_Model_Backend_Abstract
 
     function __construct(){
         if(!$this->db)
-            $this->setDb(Ikantam_Model::getConnect());
+            $this->setDb(Ikantam_Db::getConnect());
     }
 
 
@@ -23,6 +23,12 @@ abstract class Ikantam_Model_Backend_Abstract
     public function setDb($db){
         $this->db = $db;
     }
+
+
+    public function getTable(){
+        return $this->_table;
+    }
+
 
     public function describeTable(){
         if(!isset(self::$_describe[$this->_table])){
@@ -58,21 +64,21 @@ abstract class Ikantam_Model_Backend_Abstract
     }
 
 
-    public function fetchAll(\Ikantam_Model_Collections_Abstract $object, $select){
+    public function fetchAll(\Application_Model_Collections_Abstract $object, $select){
         $rows = $this->findAll($select);
         if($rows)
             $object->addData($rows);
     }
 
 
-    public function fetch(\Ikantam_Model_Abstract $object, $select){
+    public function fetch(\Application_Model_Abstract $object, $select){
         $row = $this->find($select);
         if($row)
             $object->setData($row);
     }
 
 
-    public function getById(\Ikantam_Model_Abstract $object, $id){
+    public function getById(\Application_Model_Abstract $object, $id){
         $select = $this
             ->select()
             ->where('id = ?', $id);
@@ -81,11 +87,44 @@ abstract class Ikantam_Model_Backend_Abstract
     }
 
 
-    public function getAll(\Ikantam_Model_Collections_Abstract $object){
+    public function getAll(\Application_Model_Collections_Abstract $object){
         $select = $this
             ->select();
 
         $this->fetchAll($object, $select);
+    }
+
+
+    public function insert(\Application_Model_Abstract $object){
+        $db = $this->getDb();
+        $data = $this->_clearData($object);
+        $db->insert($this->getTable(), $data);
+        $object->setId($db->lastInsertId());
+    }
+
+
+    public function update(\Application_Model_Abstract $object){
+        $db = $this->getDb();
+        $data = $this->_clearData($object);
+        $db->update($this->getTable(), $data, 'id=' . $object->getId());
+    }
+
+
+    public function delete(\Application_Model_Abstract $object){
+        $db = $this->getDb();
+        $db->delete($this->getTable(), 'id = ' . $object->getId());
+    }
+
+
+
+    /* PRIVATE FUNCTION */
+    private function _clearData(\Application_Model_Abstract $object){
+        $_data = array();
+        foreach($object->getData() as $index => $value){
+            if(in_array($index, $this->describeTable()))
+                $_data[$index] = $value;
+        }
+        return $_data;
     }
 
 
