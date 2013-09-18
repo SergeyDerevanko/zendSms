@@ -1,6 +1,6 @@
 <?php
 
-abstract class Ikantam_Model_Model_Backend_Abstract
+abstract class Ikantam_Model_Backend_Abstract
 {
     protected $db = null;
     static $_describe = array();
@@ -11,7 +11,7 @@ abstract class Ikantam_Model_Model_Backend_Abstract
 
     function __construct(){
         if(!$this->db)
-            $this->setDb(Ikantam_Db::getConnect());
+            $this->setDb(Ikantam_Model::getConnect());
     }
 
 
@@ -90,7 +90,6 @@ abstract class Ikantam_Model_Model_Backend_Abstract
     public function getAll(\Ikantam_Model_Collections_Abstract $object){
         $select = $this
             ->select();
-
         $this->fetchAll($object, $select);
     }
 

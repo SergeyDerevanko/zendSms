@@ -1,0 +1,9 @@
+<?xml version='1.0'?>
+<configdata>
+	<styles>
+        <!--<url layout="all" url="css/demo.css"/> -->
+	</styles>
+    <scripts>
+        <!--<url layout="all" url="js/jquery-2.0.1.min.js"/> -->
+    </scripts>
+</configdata>

@@ -9,54 +9,11 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
      */
     protected $_items = array();
 
-    /**
-     * Item object class name
-     *
-     * @var string
-     */
-    protected $_itemObjectClass = '';
-
-
 
     public function __construct()
     {
 
     }
-
-
-    /**
-     * Retrieve collection first item
-     *
-     * @return Varien_Object
-     */
-    public function getFirstItem()
-    {
-        $this->load();
-
-        if (count($this->_items)) {
-            reset($this->_items);
-            return current($this->_items);
-        }
-
-        return new $this->_itemObjectClass();
-    }
-
-    /**
-     * Retrieve collection last item
-     *
-     * @return Varien_Object
-     */
-    public function getLastItem()
-    {
-        $this->load();
-
-        if (count($this->_items)) {
-            return end($this->_items);
-        }
-
-        return new $this->_itemObjectClass();
-    }
-
 
     /**
      * Adding item to item array
@@ -106,5 +63,6 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
     {
         return new ArrayIterator($this->_items);
     }
+
 
 }

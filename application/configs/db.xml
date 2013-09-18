@@ -1,11 +1,12 @@
 <?xml version='1.0'?>
 <configdata>
-    <default>
+    
+<default>
         <adapter>pdo_mysql</adapter>
         <host>localhost</host>
-        <username></username>
+        <username>root</username>
         <password></password>
-        <dbname></dbname>
+        <dbname>user1112216_mebel</dbname>
 </default>
 <!-- insert -->
 </configdata>

@@ -40,8 +40,24 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
         return $this;
     }
 
+    protected function getPublicUrl($path){
+        return Ikantam_Lib_Url::getPublicUrl($path);
+    }
+
+
+    protected function getUrl($path = '', $params = array(), $reset = true, $configPath = true){
+        return Ikantam_Lib_Url::getUrl($path, $params, $reset, $configPath);
+    }
+
+
+    protected function getRouteUrl($routName, $params = array()){
+        return Ikantam_Lib_Url::getRouteUrl($routName, $params);
+    }
+
+
 
     protected function _getBackend(){
         return new $this->_classBackend();
     }
+
 }
