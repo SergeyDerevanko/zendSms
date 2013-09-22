@@ -1,0 +1,69 @@
+<?php
+class User_Model_User  extends Ikantam_Model_Abstract{
+
+    protected $_groupCollectionModel = null;
+
+
+    /* FIND PUBLIC FUNCTION */
+    public function getByEmail($email){
+        $this->_getBackend()->getByEmail($this, $email);
+        return $this;
+    }
+
+
+    /* GET PUBLIC FUNCTION */
+    public function getGroups(){
+        return $this->getGroupCollectionModel();
+    }
+
+    /* SET PUBLIC FUNCTION */
+    public function create($email, $password){
+        $this->setEmail($email)
+            ->setPassword($this->_hashPassword($password))
+            ->save();
+        return $this;
+    }
+
+
+    public function login($email, $password){
+        $this->getByEmail($email);
+        if($this->getId()){
+            if($this->_bcrypt()->verify($password, $this->getPassword())){
+                $this->_getSession()->setUserId($this->getId());
+                return true;
+            } else {
+                $this->addErrorText('password', 'error password');
+            }
+        } else {
+            $this->addErrorText('email', 'error email');
+        }
+        return false;
+    }
+
+
+
+    /* PRIVATE FUNCTION */
+    private function _hashPassword ($password){
+        return $this->_bcrypt()->create($password);
+    }
+
+
+    private function _bcrypt(){
+        return new Ikantam_Lib_Crypt_Password_Bcrypt();
+    }
+
+
+    private function _getSession(){
+        return User_Model_Session::instance();
+    }
+
+
+    /* LINK MODELS */
+    private function getGroupCollectionModel(){
+        if(empty($this->_groupCollectionModel)){
+            $this->_groupCollectionModel = new User_Model_Collections_Group();
+            $this->_groupCollectionModel->getByUserId($this->getId());
+        }
+        return $this->_groupCollectionModel;
+    }
+}

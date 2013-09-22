@@ -18,7 +18,6 @@ class InstallerController extends Ikantam_Controller_Front
     public function indexAction()
     {
         print 'installer';
-        new Ikantam_View_Helper_GetPublicUrl();
            exit;
     }
 

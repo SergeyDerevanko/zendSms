@@ -4,8 +4,13 @@ abstract class Ikantam_Model_Backend_Abstract
 {
     protected $db = null;
     static $_describe = array();
+    static $_columns = array();
 
     protected $_table = '';
+    protected $_related_table = null;
+    /* array(
+        'related_col', 'col', 'table_name'
+    )*/
 
 
 
@@ -39,9 +44,34 @@ abstract class Ikantam_Model_Backend_Abstract
     }
 
 
+    public function getColumns(){
+        if(!isset(self::$_columns[$this->_table])){
+            foreach($this->describeTable() as $key => $val){
+                self::$_columns[$this->_table][] = $key;
+            }
+        }
+        return self::$_columns[$this->_table];
+    }
+
+
+    public function relatedSelect($name = null, $cols = '*', $schema = null){
+        $name = $name ? $name : $this->_table;
+        $select = $this->select($name, $cols, $schema);
+        if($this->_related_table){
+            $select->join(
+                array('related' => $this->_related_table['table_name']),
+                $name . '.' . $this->_related_table['col'] . ' = related.' . $this->_related_table['related_col'],
+                array()
+            );
+        }
+        return $select;
+    }
+
+
     public function select($name = null, $cols = '*', $schema = null){
         $name = $name ? $name : $this->_table;
-        return $this->getDb()->select()->from($name, $cols = '*', $schema = null);
+        $select = $this->getDb()->select()->from($name, $cols, $schema);
+        return $select;
     }
 
 
@@ -117,13 +147,24 @@ abstract class Ikantam_Model_Backend_Abstract
 
 
     /* PRIVATE FUNCTION */
-    private function _clearData(\Ikantam_Model_Abstract $object){
+    protected function _clearData(\Ikantam_Model_Abstract $object){
         $_data = array();
         foreach($object->getData() as $index => $value){
-            if(in_array($index, $this->describeTable()))
+            if(in_array($index, $this->getColumns()))
                 $_data[$index] = $value;
         }
         return $_data;
+    }
+
+
+    protected function _prepare($sql, $params = array()){
+        $db = $this->getDb();
+        $stmt = $db->prepare($sql);
+        foreach($params as $index => $param){
+            $stmt->bindParam(':'. $index, $param);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

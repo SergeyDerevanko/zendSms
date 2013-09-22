@@ -7,6 +7,7 @@
  */
 abstract class Ikantam_Model_Abstract extends Ikantam_Object
 {
+    protected $_messages = array();
     protected $_classBackend = null;
 
     public function __construct($id = null){
@@ -39,6 +40,30 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
         $this->_getBackend()->getById($this, $id);
         return $this;
     }
+
+
+    public function addErrorText($index, $text){
+        $mess = new Ikantam_Object_Message_Error();
+        $mess->setText($text);
+        $this->addError($index, $mess);
+        return $this;
+    }
+
+
+    public function addError($index, \Ikantam_Object_Message_Error $obect){
+        $this->_messages[$index]['error'][] = $obect;
+        return $this;
+    }
+
+
+    public function getErrorArrayByIndex($index){
+        return $this->_messages[$index]['error'];
+    }
+
+    public function getMessages(){
+        return $this->_messages;
+    }
+
 
     protected function getPublicUrl($path){
         return Ikantam_Lib_Url::getPublicUrl($path);
