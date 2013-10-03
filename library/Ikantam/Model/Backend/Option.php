@@ -16,9 +16,9 @@ class Ikantam_Model_Backend_Option extends Ikantam_Model_Backend_Abstract
 
 
     /* OBJECT */
-    public function getByTypeAndName(\Ikantam_Model_Abstract $object, $module, $name){
+    public function getByTypeAndName(\Ikantam_Model_Abstract $object, $type, $name){
         $select = $this->select()
-            ->where('type = ?', $module)
+            ->where('type = ?', $type)
             ->where('name = ?', $name);
         $this->fetch($object, $select);
     }

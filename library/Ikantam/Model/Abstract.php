@@ -45,13 +45,13 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
     }
 
 
-    public function addError($index, \Ikantam_Object_Message_Error $obect){
-        $this->_messages[$index]['error'][] = $obect;
+    public function addError($index, \Ikantam_Object_Message_Error $object){
+        $this->_messages[$index]['error'][] = $object;
         return $this;
     }
 
 
-    public function getErrorArrayByIndex($index){
+    public function getErrorsByIndex($index){
         return $this->_messages[$index]['error'];
     }
 

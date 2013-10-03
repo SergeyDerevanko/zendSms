@@ -10,9 +10,9 @@ class User_Model_Backend_Group extends Ikantam_Model_Backend_Abstract
     );
 
 
+    /* OBJECT */
     public function getByUserId(\Ikantam_Model_Collections_Abstract $object, $userId){
         $select = $this->relatedSelect()->where('related.user_id = ?', $userId);
-        //echo $select->__toString();exit;
         $this->fetchAll($object, $select);
     }
 }

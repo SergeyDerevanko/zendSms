@@ -162,15 +162,24 @@ abstract class Ikantam_Model_Backend_Abstract
     }
 
 
-    protected function _prepare($sql, $params = array()){
+    protected function prepare($sql, $params = array()){
         $db = $this->getDb();
         $stmt = $db->prepare($sql);
-        foreach($params as $index => $param){
+        foreach($params as $index => &$param){
             $stmt->bindParam(':'. $index, $param);
         }
         $stmt->execute();
+        return $stmt;
+    }
+
+
+    protected function prepareFetchAll($sql, $params = array()){
+        $stmt = $this->_prepare($sql, $params);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+
+
 
 
 

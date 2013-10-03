@@ -38,6 +38,15 @@ abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
     }
 
 
+    public function getStringImplodeColumn($column, $imp = ','){
+        $array = array();
+        foreach($this as $item){
+            $array[] = $item->getData($column);
+        }
+        return implode($imp, $array);
+    }
+
+
     public function setAllCount($count){
         $this->_allCount = $count;
         return $this;

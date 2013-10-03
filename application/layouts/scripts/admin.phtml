@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 9]><script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+<!--[if IE 8 ]><html class="ie8"><![endif]-->
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <?php echo $this->headTitle(); ?>
+    <?php echo $this->headMeta();  ?>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script> var publicUrl = '<?php echo $this->getPublicUrl(); ?>'</script>
+    <?php echo $this->headLink(); ?>
+    <?php echo $this->headScript(); ?>
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="navbar navbar-default">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Test</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="thumbnail">
+            <?php echo $this->layout()->content ; ?>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

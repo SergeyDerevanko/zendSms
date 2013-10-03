@@ -4,7 +4,7 @@ class Ikantam_Option
 {
 
     public static function getOption($type, $name, $value = ''){
-        return self::getOption($type, $name, $value)->getValue();
+        return self::getObjectOption($type, $name, $value)->getValue();
     }
 
 

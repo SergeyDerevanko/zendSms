@@ -1,0 +1,19 @@
+<?php echo $this->partial('admin/nav.phtml', 'Users') ; ?>
+<?php $groups = $this->groups; ?>
+<form class="form-horizontal" role="form" method="post">
+    <div class="form-group">
+        <label for="inputPassword1" class="col-lg-2 control-label">Default Group</label>
+        <div class="col-lg-10">
+            <select name="default_group">
+                <?php foreach($groups as $group){?>
+                <option <?php if($group->getId() == $this->default_group) echo 'selected="selected"'?> value="<?php echo $group->getId(); ?>"><?php echo $group->getName();?></option>
+                <?php }?>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</form>

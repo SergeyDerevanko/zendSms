@@ -4,6 +4,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     protected $_groupCollectionModel = null;
 
 
+
     /* FIND PUBLIC FUNCTION */
     public function getByEmail($email){
         $this->_getBackend()->getByEmail($this, $email);
@@ -11,16 +12,37 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
+
     /* GET PUBLIC FUNCTION */
     public function getGroups(){
         return $this->getGroupCollectionModel();
     }
 
+
+
     /* SET PUBLIC FUNCTION */
-    public function create($email, $password){
-        $this->setEmail($email)
-            ->setPassword($this->_hashPassword($password))
-            ->save();
+    public function create($data){
+        $this->setEmail($data['email'])
+            ->setPassword($this->_hashPassword($data['password']))
+            ->setConfPassword($data['conf_password']);
+
+        $form = new User_Form_Create();
+
+        if($form->isValid($this->getData())){
+            echo 'ok';
+        } else {
+            print_r($form->getErrors());
+            echo 'error';
+        }
+        exit;
+        //    ->save();
+        $this->addGroup($this->getOption('users', 'default_group', 2));
+        return $this;
+    }
+
+
+    public function addGroup($groupId){
+        $this->_getBackend()->addGroup($this->getId(), $groupId);
         return $this;
     }
 
@@ -38,6 +60,11 @@ class User_Model_User  extends Ikantam_Model_Abstract{
             $this->addErrorText('email', 'error email');
         }
         return false;
+    }
+
+
+    public function logout(){
+        $this->_getSession()->logout();
     }
 
 
@@ -61,7 +88,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     /* LINK MODELS */
     private function getGroupCollectionModel(){
         if(empty($this->_groupCollectionModel)){
-            $this->_groupCollectionModel = new User_Model_Collections_Group();
+            $this->_groupCollectionModel = new Users_Model_Collections_Group();
             $this->_groupCollectionModel->getByUserId($this->getId());
         }
         return $this->_groupCollectionModel;

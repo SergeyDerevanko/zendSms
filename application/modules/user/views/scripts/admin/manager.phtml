@@ -1,0 +1,22 @@
+<?php echo $this->partial('admin/nav.phtml', 'Users') ; ?>
+<?php $users = $this->users; ?>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="w-50">#</th>
+        <th>Email</th>
+        <th>Groups</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <?php foreach($users as $user){?>
+        <tr>
+            <td><?php echo $user->getId(); ?></td>
+            <td><?php echo $user->getEmail(); ?></td>
+            <td><?php echo $user->getGroups()->getStringImplodeColumn('name');?></td>
+            <td></td>
+        </tr>
+        <?php }?>
+    </tbody>
+</table>

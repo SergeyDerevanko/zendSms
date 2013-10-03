@@ -7,5 +7,24 @@
 			<defaults module="default" controller="index" action="index" />
 		</home>
 
+        <storage_options>
+            <route>admin/storage/options</route>
+            <defaults module="Storage" controller="admin" action="options" />
+        </storage_options>
+
+
+        <user_options>
+            <route>admin/user/options</route>
+            <defaults module="user" controller="admin" action="options" />
+        </user_options>
+        <user_groups>
+            <route>admin/user/groups</route>
+            <defaults module="user" controller="admin" action="groups" />
+        </user_groups>
+        <user_manager>
+            <route>admin/user/manager</route>
+            <defaults module="user" controller="admin" action="manager" />
+        </user_manager>
 	</routes>
+
 </configdata>

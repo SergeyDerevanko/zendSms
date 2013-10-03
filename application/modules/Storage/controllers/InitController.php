@@ -47,4 +47,11 @@ class Storage_InitController extends Ikantam_Controller_Installer
       exit;
   }
 
+    /*
+     * ROUTES
+    <storage_options>
+            <route>admin/storage/options</route>
+            <defaults module="Storage" controller="admin" action="options" />
+    </storage_options>
+     * */
 }

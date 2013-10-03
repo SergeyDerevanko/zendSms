@@ -18,28 +18,68 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
         parent::dispatch($action);
 
         $layoutName = $this->_helper->layout->getLayout();
+        if(!empty($this->_styles->url))   {
 
-        if(!empty($this->_styles->url))
-        foreach($this->_styles->url as $_style){
-            if(array_intersect(array('all', $layoutName), explode(',', $_style->layout)))
-                $this->addStylePublic($_style->url);
+            if(empty($this->_styles->url->layout)){
+                foreach($this->_styles->url as $_style){
+                    if(array_intersect(array('all', $layoutName),
+                        explode(',', $_style->layout)))
+                        if(!empty($_style->url)){
+                            $this->addStylePublic($_style->url);
+                        } else {
+                            $this->addStyle($_style->href);
+                        }
+                }
+            } else {
+                $_style = $this->_styles->url;
+                if(array_intersect(array('all', $layoutName),
+                    explode(',', $_style->layout)))
+                    $this->addStylePublic($_style->url);
+            }
         }
 
-        if(!empty($this->_scripts->_url))
-        foreach($this->_scripts->url as $_script){
-            if(array_intersect(array('all', $layoutName), explode(',', $_script->layout)))
-                $this->addScriptPublic($_script->url);
+        if(!empty($this->_scripts->url))  {
+
+            if(empty($this->_scripts->url->layout)){
+                foreach($this->_scripts->url as $_script){
+                    if(array_intersect(array('all', $layoutName),
+                        explode(',', $_script->layout)))
+                        if(!empty($_script->url)){
+                            $this->addScriptPublic($_script->url);
+                        } else {
+                            $this->addScript($_script->href);
+                        }
+                }
+            } else {
+                $_script = $this->_scripts->url;
+                if(array_intersect(array('all', $layoutName), explode(',', $_script->layout)))
+                    if(!empty($_script->url)){
+                        $this->addScriptPublic($_script->url);
+                    } else {
+                        $this->addScript($_script->href);
+                    }
+            }
         }
     }
 
 
     public function addScriptPublic($path){
-        $this->view->headScript()->appendFile($this->getPublicUrl($path), 'text/javascript');
+        $this->addScript($this->getPublicUrl($path));
+    }
+
+
+    public function addScript($url){
+        $this->view->headScript()->appendFile($url, 'text/javascript');
     }
 
 
     public function addStylePublic($path){
-        $this->view->headLink()->appendStylesheet($this->getPublicUrl($path));
+        $this->addStyle($this->getPublicUrl($path));
+    }
+
+
+    public function addStyle($url){
+        $this->view->headLink()->appendStylesheet($url);
     }
 
 
