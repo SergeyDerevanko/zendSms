@@ -25,41 +25,46 @@ abstract class Ikantam_Model_Backend_Abstract
     }
 
 
+    public function getPrefix(){
+        return Ikantam_Model::getPrefix();
+    }
+
+
     public function setDb($db){
         $this->db = $db;
     }
 
 
     public function getTable(){
-        return $this->_table;
+        return $this->getPrefix() . $this->_table;
     }
 
 
     public function describeTable(){
-        if(!isset(self::$_describe[$this->_table])){
+        if(!isset(self::$_describe[$this->getTable()])){
             $db = $this->getDb();
-            self::$_describe[$this->_table] = $db->describeTable($this->_table);
+            self::$_describe[$this->getTable()] = $db->describeTable($this->getTable());
         }
-        return self::$_describe[$this->_table];
+        return self::$_describe[$this->getTable()];
     }
 
 
     public function getColumns(){
-        if(!isset(self::$_columns[$this->_table])){
+        if(!isset(self::$_columns[$this->getTable()])){
             foreach($this->describeTable() as $key => $val){
-                self::$_columns[$this->_table][] = $key;
+                self::$_columns[$this->getTable()][] = $key;
             }
         }
-        return self::$_columns[$this->_table];
+        return self::$_columns[$this->getTable()];
     }
 
 
     public function relatedSelect($name = null, $cols = '*', $schema = null){
-        $name = $name ? $name : $this->_table;
+        $name = $name ? $name : $this->getTable();
         $select = $this->select($name, $cols, $schema);
         if($this->_related_table){
             $select->join(
-                array('related' => $this->_related_table['table_name']),
+                array('related' => $this->getPrefix() . $this->_related_table['table_name']),
                 $name . '.' . $this->_related_table['col'] . ' = related.' . $this->_related_table['related_col'],
                 array()
             );
@@ -69,7 +74,7 @@ abstract class Ikantam_Model_Backend_Abstract
 
 
     public function select($name = null, $cols = '*', $schema = null){
-        $name = $name ? $name : $this->_table;
+        $name = $name ? $name : $this->getTable();
         $select = $this->getDb()->select()->from($name, $cols, $schema);
         return $select;
     }

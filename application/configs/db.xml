@@ -1,12 +1,41 @@
 <?xml version='1.0'?>
 <configdata>
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <default>
         <adapter>pdo_mysql</adapter>
         <host>localhost</host>
         <username>root</username>
         <password></password>
-        <dbname>testsms</dbname>
+        <dbname>test</dbname>
+        <prefix></prefix>
 </default>
 <!-- insert -->
 </configdata>

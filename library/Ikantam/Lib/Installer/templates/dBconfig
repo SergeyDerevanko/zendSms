@@ -4,5 +4,6 @@
         <username>{username}</username>
         <password>{password}</password>
         <dbname>{dbname}</dbname>
+        <prefix>{prefix}</prefix>
 </{nameConf}>
 <!-- insert -->

@@ -58,26 +58,30 @@ class InstallerController extends Ikantam_Controller_Front
     public function dbAction(){
         $configName = 'default';
         $explorer = $this->_installer->factory('Db');
-
+        $mess = false;
 
         if($this->getRequest()->isPost()){
-            $explorer->setConfig(
-                $this->getParam('adapter', ''),
-                $this->getParam('host', ''),
-                $this->getParam('username', ''),
-                $this->getParam('password', ''),
-                $this->getParam('dbname', ''),
-                $configName);
+            if($this->getParam('test')){
+                $mess = $explorer->testConnect();
+            } elseif($this->getParam('mrg')){
+                $explorer->mrg();
+            } else {
+                $explorer->setConfig(
+                    $this->getParam('adapter', 'pdo_mysql'),
+                    $this->getParam('host', ''),
+                    $this->getParam('username', ''),
+                    $this->getParam('password', ''),
+                    $this->getParam('dbname', ''),
+                    $this->getParam('prefix', ''),
+                    $configName);
+            }
         }
 
+        $this->view->mess = $mess;
         $conf = $explorer->getConfig($configName);
         $this->view->dbConfig = $conf;
     }
 
-
-
-
-	
 }
 
 

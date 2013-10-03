@@ -1,10 +1,5 @@
 <?php
-/**
- * Abstract model
- *
- * @method int getId()
- *
- */
+
 abstract class Ikantam_Model_Abstract extends Ikantam_Object
 {
     protected $_messages = array();
@@ -85,4 +80,18 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
         return new $this->_classBackend();
     }
 
+
+    public function getObjectOptions($type){
+        return Ikantam_Option::getObjectOptions($type);
+    }
+
+
+    public function getOption($type, $name, $value = ''){
+        return Ikantam_Option::getOption($type, $name, $value);
+    }
+
+
+    public function getOptions($type){
+        return Ikantam_Option::getOptions($type);
+    }
 }
