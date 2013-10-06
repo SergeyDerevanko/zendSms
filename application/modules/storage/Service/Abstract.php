@@ -20,77 +20,6 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
   }
 
 
-
-
-  
-  /* Utility */
-  
-  public function getBaseUrl()
-  {
-    return $this->_removeScriptName(Zend_Controller_Front::getInstance()->getBaseUrl());
-  }
-
-  public function fileInfo($file)
-  {
-    // $file is an instance of Zend_Form_Element_File
-    if( $file instanceof Zend_Form_Element_File ) {
-      $info = $file->getFileInfo();
-      $info = current($info);
-    }
-
-    // $file is a key of $_FILES
-    else if( is_array($file) ) {
-      $info = $file;
-    }
-
-    // $file is a string
-    else if( is_string($file) ) {
-      $info = array(
-        'tmp_name' => $file,
-        'name' => basename($file),
-        'type' => 'unknown/unknown', // @todo
-        'size' => filesize($file)
-      );
-
-      // Try to get image info
-      if( function_exists('getimagesize') && ($imageinfo = getimagesize($file)) ) {
-        $info['type'] = $imageinfo['mime'];
-      }
-    }
-
-    // $file is an unknown type
-    else {
-      throw new Storage_Service_Exception('Unknown file type specified');
-    }
-
-    // Check to make sure file exists and not security problem
-    self::_checkFile($info['tmp_name'], 04); // Check for read
-
-    // Do some other stuff
-    $mime_parts = explode('/', $info['type'], 2);
-    $info['mime_major'] = $mime_parts[0];
-    $info['mime_minor'] = $mime_parts[1];
-    $info['hash'] = md5_file($info['tmp_name']);
-    $info['extension'] = ltrim(strrchr($info['name'], '.'), '.');
-    unset($info['type']);
-    
-    return $info;
-  }
-
-  protected function _removeScriptName($url)
-  {
-    if (!isset($_SERVER['SCRIPT_NAME'])) {
-      // We can't do much now can we? (Well, we could parse out by ".")
-      return $url;
-    }
-
-    if (($pos = strripos($url, basename($_SERVER['SCRIPT_NAME']))) !== false) {
-      $url = substr($url, 0, $pos);
-    }
-
-    return $url;
-  }
-
   protected function _checkFile($file, $mode = 06)
   {
     // @todo This is fubared, fix up later
@@ -267,24 +196,11 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
   }
 
 
-    public function generate(array $params)
-    {
-        if( empty($params['parent_type']) ) {
-            throw new Zend_Exception('Unspecified resource parent type');
-        } else if( empty($params['id']) || !is_numeric($params['id']) ) {
-            throw new Zend_Exception('Unspecified resource identifier');
-        } else if( empty($params['extension']) ) {
-            throw new Zend_Exception('Unspecified resource extension');
-        }
-
-        extract($params);
-
+    public function generate(){
         $path = 'public' . '/';
-        $path .= $params['parent_type'] . '/';
         $base = 255;
-        $tmp = $params['id'];
+        $tmp = time();
 
-        // Generate subdirs while id > $base
         do {
             $mod = ( $tmp % $base );
             $tmp -= $mod;
@@ -292,9 +208,8 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
             $path .= sprintf("%02x", $mod) . '/';
         } while( $tmp > 0 );
 
-        $path .= sprintf("%04x", $tmp)
-            . '_' . substr($hash, 4, 4)
-            . '.' . $extension;
+        $path .= substr(md5(time() + mt_rand(1000, 999999)), 4, 4)
+            . '_' . substr(md5(time()), 4, 4);
 
         return $path;
     }

@@ -18,7 +18,6 @@ class User_Model_Backend_User extends Ikantam_Model_Backend_Abstract
             'user_group_id' => $groupId
         ));
     }
-<<<<<<< HEAD
 
 
     public function deleteGroup($userId){
@@ -28,6 +27,4 @@ class User_Model_Backend_User extends Ikantam_Model_Backend_Abstract
             'user_id' => $userId
         ));
     }
-=======
->>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
 }

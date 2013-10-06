@@ -19,7 +19,6 @@ class User_AdminController extends Ikantam_Controller_Admin
     }
 
 
-<<<<<<< HEAD
     public function deleteuserAction(){
         $data = array('success' => true);
 
@@ -32,8 +31,6 @@ class User_AdminController extends Ikantam_Controller_Admin
     }
 
 
-=======
->>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
     public function groupsAction(){
         if($post = $this->getRequest()->getPost()){
             $group = new User_Model_Group();

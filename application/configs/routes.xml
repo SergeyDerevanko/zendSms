@@ -12,7 +12,6 @@
             <defaults module="Storage" controller="admin" action="options" />
         </storage_options>
 
-<<<<<<< HEAD
         <admin_user_options>
             <route>admin/user/options</route>
             <defaults module="user" controller="admin" action="options" />
@@ -25,21 +24,6 @@
             <route>admin/user/manager</route>
             <defaults module="user" controller="admin" action="manager" />
         </admin_user_manager>
-=======
-
-        <user_options>
-            <route>admin/user/options</route>
-            <defaults module="user" controller="admin" action="options" />
-        </user_options>
-        <user_groups>
-            <route>admin/user/groups</route>
-            <defaults module="user" controller="admin" action="groups" />
-        </user_groups>
-        <user_manager>
-            <route>admin/user/manager</route>
-            <defaults module="user" controller="admin" action="manager" />
-        </user_manager>
->>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
 	</routes>
 
 </configdata>

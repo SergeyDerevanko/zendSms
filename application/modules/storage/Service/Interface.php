@@ -11,7 +11,7 @@ interface Storage_Service_Interface
 
     public function read(Storage_Model_File $model);
 
-    public function write(Storage_Model_File $model, $data);
+    public function write($data);
 
     public function remove(Storage_Model_File $model);
 
