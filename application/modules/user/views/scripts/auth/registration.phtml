@@ -1,0 +1,15 @@
+<h1>Registration</h1>
+<?php if($this->mess_error){?>
+<h3 style="color: red;"><?php echo $this->mess_error; ?></h3>
+<?php }?>
+
+<?php if($this->mess_success){?>
+<h3 style="color: #adff2f;"><?php echo $this->mess_success; ?></h3>
+<?php }?>
+<a href="<?php echo $this->getUrl('user/auth/login'); ?>">login</a>
+<form method="post" action="">
+    <input type="text" name="email" placeholder="email">
+    <input type="text" name="password" placeholder="password">
+    <input type="text" name="conf_password" placeholder="conf password">
+    <input type="submit" value="registration">
+</form>

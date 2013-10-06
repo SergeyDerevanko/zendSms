@@ -1,14 +1,16 @@
 <?php
-/**
- * Abstract model
- *
- * @method int getId()
- *
- */
+
 abstract class Ikantam_Model_Abstract extends Ikantam_Object
 {
-    protected $_messages = array();
+    protected $_validClass = null;
+    protected $_errors = null;
     protected $_classBackend = null;
+
+
+    protected function beforeValid(){}
+    protected function beforeSave(){}
+    protected function afterSave(){}
+
 
     public function __construct($id = null){
         $className = explode('_', get_class($this));
@@ -16,15 +18,54 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
         if (is_numeric($id)) {
             $this->getById($id);
         }
+
+        $this->_errors = new Ikantam_Model_Errors();
     }
 
 
     public function save(){
-        if($this->getId()){
-            $this->_getBackend()->update($this);
-        } else {
-            $this->_getBackend()->insert($this);
+        $this->beforeValid();
+        if($this->isValid()){
+            $this->beforeSave();
+            try {
+                if($this->getId()){
+                    $this->_getBackend()->update($this);
+                } else {
+                    $this->_getBackend()->insert($this);
+                }
+                return $this;
+            } catch (Exception $e) {
+                return false;
+            }
+            $this->afterSave();
         }
+        return false;
+    }
+
+
+    public function isValid(){
+        $class = $this->getValidClass();
+        $validObject = new $class();
+        $validObject->setValidatorDescribe($this->_getBackend()->describeTable());
+        $isValid = $validObject->isValid($this->getData());
+        if(!$isValid){
+            foreach($validObject->getErrors() as $index => $value){
+                foreach($value as $error){
+                    $this->addTextError($index, $error);
+                }
+            }
+        }
+        return $isValid;
+    }
+
+
+    public function getValidClass(){
+        return $this->_validClass ? $this->_validClass : new Ikantam_Form();
+    }
+
+
+    public function setValidClass($class){
+        $this->_validClass = $class;
         return $this;
     }
 
@@ -42,26 +83,28 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
     }
 
 
-    public function addErrorText($index, $text){
-        $mess = new Ikantam_Object_Message_Error();
-        $mess->setText($text);
-        $this->addError($index, $mess);
+    public function addTextError($index, $text){
+        $this->_errors->addText($index, $text);
         return $this;
     }
 
 
-    public function addError($index, \Ikantam_Object_Message_Error $obect){
-        $this->_messages[$index]['error'][] = $obect;
+    public function addObjectError($index, \Ikantam_Object_Message_Error $object){
+        $this->_errors->addObject($index, $object);
         return $this;
     }
 
 
-    public function getErrorArrayByIndex($index){
-        return $this->_messages[$index]['error'];
+    public function getErrorsGrouping($typeGrouping = 'fields_string'){
+        return $this->_errors->getErrorsGrouping($typeGrouping);
     }
 
-    public function getMessages(){
-        return $this->_messages;
+    public function getErrorsString(){
+        return $this->_errors->getErrorsGrouping('string');
+    }
+
+    public function getErrorsArray(){
+        return $this->_errors->getErrorsGrouping();
     }
 
 
@@ -85,4 +128,18 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
         return new $this->_classBackend();
     }
 
+
+    public function getObjectOptions($type){
+        return Ikantam_Option::getObjectOptions($type);
+    }
+
+
+    public function getOption($type, $name, $value = ''){
+        return Ikantam_Option::getOption($type, $name, $value);
+    }
+
+
+    public function getOptions($type){
+        return Ikantam_Option::getOptions($type);
+    }
 }

@@ -17,13 +17,36 @@ class Ikantam_Model
             );
 
             self::$_db = Zend_Db::factory($cfg->adapter, $config);
+            Zend_Db_Table_Abstract::setDefaultAdapter(self::$_db);
+
         }
         return self::$_db;
     }
 
 
+    public static function getPrefix(){
+        $cfg = self::getConfig();
+        return $cfg->prefix;
+    }
+
+
     public static function getConfig($type = 'default'){
         return new Zend_Config_Xml(APPLICATION_PATH.'/configs/db.xml', $type);
+    }
+
+
+    public static function beginTransaction(){
+        self::getConnect()->beginTransaction();
+    }
+
+
+    public static function commit(){
+        self::getConnect()->commit();
+    }
+
+
+    public function rollBack(){
+        self::getConnect()->rollBack();
     }
 
 

@@ -1,0 +1,11 @@
+
+<table>
+<?php foreach($this->user->getData() as $index => $value){?>
+<tr>
+    <td><?php echo $index; ?></td>
+    <td><?php echo $value; ?></td>
+</tr>
+<?php }?>
+</table>
+
+<a href="<?php echo $this->getUrl('user/auth/logout'); ?>">LOGOUT</a>

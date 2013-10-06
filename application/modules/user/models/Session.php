@@ -18,24 +18,23 @@ class User_Model_Session  extends Ikantam_Model_Abstract{
     }
 
 
-    public function loginUser(){
-        return new User_Model_User($this->getUserId());
+    public static function loginUser(){
+        return new User_Model_User(self::instance()->getUserId());
     }
 
 
-    public function loginUserId(){
-        return $this->loginUser()->getId();
+    public static function loginUserId(){
+        return self::loginUser()->getId();
     }
 
 
-    public function isLogin(){
-        return $this->loginUserId() ? true : false;
+    public static function isLogin(){
+        return self::loginUserId() ? true : false;
     }
 
 
-    public function logout(){
-        $this->setUserId(0);
-        return $this;
+    public static function logout(){
+        return self::instance()->setUserId(0);
     }
 
 

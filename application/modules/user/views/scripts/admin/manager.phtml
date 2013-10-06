@@ -1,0 +1,50 @@
+
+
+<script>
+    $(function(){
+        $('body').on('click', '.btn-delete', function(){
+            var $block = $(this).closest('tr');
+
+            $.ajax({type: 'POST',
+                datatype:"json",
+                url: publicUrl+ 'user/admin/deleteuser',
+                data: {'user_id' :$block.attr('data-id')},
+                success: function(data){
+                    if(data.success){
+                        $block.remove();
+                    }
+                }
+            });
+            return false;
+        }) ;
+
+        $('body').on('click', '.btn-edit', function(){
+            $('#groups_edit').modal('show');
+        });
+    })
+</script>
+
+<?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
+
+<?php $users = $this->users; ?>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="w-50">#</th>
+        <th>Email</th>
+        <th>Groups</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <?php foreach($users as $user){?>
+        <tr data-id="<?php echo $user->getId(); ?>">
+            <td><?php echo $user->getId(); ?></td>
+            <td><?php echo $user->getEmail(); ?></td>
+            <td><?php echo $user->getGroups()->getStringImplodeColumn('name');?><a href="#" class="btn-edit">Edit</a></td>
+            <td><button class="btn btn-danger btn-delete">Delete</button></td>
+        </tr>
+        <?php }?>
+    </tbody>
+</table>
+

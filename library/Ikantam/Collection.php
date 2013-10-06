@@ -65,4 +65,10 @@ abstract class Ikantam_Collection implements IteratorAggregate, Countable
     }
 
 
+    public function __call($methodName, $args){
+        $reaction = Ikantam_Lib_System_Reaction::call($methodName, $args);
+        if($reaction !== null)
+            return $reaction;
+
+    }
 }

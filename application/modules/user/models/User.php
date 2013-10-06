@@ -4,6 +4,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     protected $_groupCollectionModel = null;
 
 
+
     /* FIND PUBLIC FUNCTION */
     public function getByEmail($email){
         $this->_getBackend()->getByEmail($this, $email);
@@ -11,16 +12,40 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
+
     /* GET PUBLIC FUNCTION */
     public function getGroups(){
         return $this->getGroupCollectionModel();
     }
 
+
+
     /* SET PUBLIC FUNCTION */
-    public function create($email, $password){
-        $this->setEmail($email)
-            ->setPassword($this->_hashPassword($password))
-            ->save();
+    public function create($data){
+        $this->setEmail($data['email'])
+            ->setPassword($data['password'])
+            ->setConfPassword($data['conf_password'])
+            ->setCreateDate(time());
+
+        $this->setValidClass('User_Form_Create');
+
+        if($this->save()){
+            $this->addGroup($this->getOption('users', 'default_group', 2));
+            return $this;
+        }
+        return false;
+    }
+
+
+    public function addGroup($groupId){
+        $this->_getBackend()->addGroup($this->getId(), $groupId);
+        return $this;
+    }
+
+
+    public function delete(){
+        $this->_getBackend()->deleteGroup($this->getId());
+        parent::delete();
         return $this;
     }
 
@@ -30,19 +55,37 @@ class User_Model_User  extends Ikantam_Model_Abstract{
         if($this->getId()){
             if($this->_bcrypt()->verify($password, $this->getPassword())){
                 $this->_getSession()->setUserId($this->getId());
-                return true;
+                return $this;
             } else {
-                $this->addErrorText('password', 'error password');
+                $this->addTextError('password', 'error password');
             }
         } else {
-            $this->addErrorText('email', 'error email');
+            $this->addTextError('email', 'error email');
         }
         return false;
     }
 
 
+    public function logout(){
+        $this->_getSession()->logout();
+    }
+
+
+
+
 
     /* PRIVATE FUNCTION */
+    public function beforeValid(){
+        $this->setModifyDate(time());
+    }
+
+
+    protected function beforeSave(){
+        if(strlen($this->getData('password')) < 20)
+            $this->setPassword($this->_hashPassword($this->getpassword()));
+    }
+
+
     private function _hashPassword ($password){
         return $this->_bcrypt()->create($password);
     }

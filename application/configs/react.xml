@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<configdata>
+
+    <Rsession>
+        <class>User_Model_Session</class>
+    </Rsession>
+    <!--
+    Connection static responses.
+    Name must be lowercase, uppercase letter R in order to avoid conflicts with the internal functions
+    <Rsession>
+        <class>User_Model_Session</class>
+    </Rsession>
+    -->
+</configdata>

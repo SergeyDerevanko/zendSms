@@ -4,7 +4,5 @@
         $user = new User_Model_Session();
         $user = $user->loginUser();
 
-        print_R($user->getGroups());
-
     }
 }

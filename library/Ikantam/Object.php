@@ -63,7 +63,7 @@ class Ikantam_Object
      * @param string $key
      * @return mixed
      */
-    public function getData($key = '', $default = null)
+    public function &getData($key = '', $default = null)
     {
         if ($key === '') {
             return $this->_data;
@@ -96,6 +96,10 @@ class Ikantam_Object
      */
     public function __call($method, $args)
     {
+        $reaction = Ikantam_Lib_System_Reaction::call($method, $args);
+        if($reaction !== null)
+            return $reaction;
+
         switch (substr($method, 0, 3)) {
             case 'get' :
                 $key  = $this->_underscore(substr($method, 3));

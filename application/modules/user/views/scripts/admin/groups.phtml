@@ -1,0 +1,43 @@
+<?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
+
+<?php $groups = $this->groups; ?>
+<script>
+    $(function(){
+        $('body').on('click', '.btn-delete', function(){
+            var $block = $(this).closest('tr');
+
+            return false;
+        });
+    });
+</script>
+<form class="form-inline" role="form" method="post">
+    <div class="form-group">
+        <label class="sr-only">Name</label>
+        <input type="text" class="form-control" name="name" placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label class="sr-only">Slug</label>
+        <input type="text" class="form-control" name="slug" placeholder="Slug">
+    </div>
+    <button type="submit" class="btn  btn-primary">Add</button>
+</form>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="w-50">#</th>
+        <th>Name</th>
+        <th>Slug</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach($groups as $group){?>
+    <tr data-id="<?php echo $group->getId()?>">
+        <td><?php echo $group->getId()?></td>
+        <td><?php echo $group->getName()?></td>
+        <td><?php echo $group->getSlug()?></td>
+        <td><button type="button" class="btn btn-danger btn-delete">Delete</button></td>
+    </tr>
+        <?php }?>
+    </tbody>
+</table>

@@ -26,13 +26,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
 
-    /*protected function _init_Db()
-    {
-        $resource = $this->getPluginResource('db');
-        Zend_Registry::set('db', $resource->getDbAdapter());
+    protected function _initDb(){
+        Ikantam_Model::getConnect();
     }
 
-
+      /*
     
     protected function _initActionHelpers()
     { 
@@ -40,6 +38,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             'Ikantam/Controller/Action/Helper/',
             'Ikantam_Controller_Action_Helper');
     }*/
+
+
+
 
 }
 
