@@ -1,0 +1,62 @@
+<?php $services = $this->services; ?>
+
+<script>
+    $(function(){
+        $('body').on('change', '[name="service_id"]', function(){
+            $('.option-block').hide('blind');
+            $('.option-block-id-' + $(this).val()).show('blind');
+        });
+        $('[name="service_id"]').change();
+    })
+</script>
+
+<form class="form-horizontal" role="form" method="post">
+    <div class="form-group">
+        <label class="col-lg-2 control-label">Storage Services</label>
+        <div class="col-lg-10">
+            <select name="service_id">
+                <?php foreach($services as $service){?>
+                <option <?php if($service->getId() == $this->service_id) echo 'selected="selected"';?> value="<?php echo $service->getId();?>"><?php echo $service->getTitle(); ?></option>
+                <?php }?>
+            </select>
+        </div>
+    </div>
+
+    <div style="display: none;" class="option-block-id-1 option-block">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Path</label>
+            <div class="col-lg-10">
+                <input type="text" name="path" value="<?php echo $this->path; ?>" placeholder="Path">
+            </div>
+        </div>
+    </div>
+
+    <div style="display: none;" class="option-block-id-2 option-block">
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Access Key</label>
+            <div class="col-lg-10">
+                <input type="text" name="accessKey" value="<?php echo $this->accessKey; ?>" placeholder="Access Key">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Secret Key</label>
+            <div class="col-lg-10">
+                <input type="text" name="secretKey" value="<?php echo $this->secretKey; ?>" placeholder="Secret Key">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Bucket</label>
+            <div class="col-lg-10">
+                <input type="text" name="bucket" value="<?php echo $this->bucket; ?>" placeholder="Bucket">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </div>
+</form>

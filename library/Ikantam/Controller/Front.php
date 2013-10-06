@@ -22,6 +22,7 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
         if(!empty($this->_styles->url))   {
 
             if(empty($this->_styles->url->layout)){
+<<<<<<< HEAD
                 $urls = $this->_styles->url;
             } else {
                 $urls = array($this->_styles->url);
@@ -35,10 +36,27 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
                     } else {
                         $this->addStyle($_style->href);
                     }
+=======
+                foreach($this->_styles->url as $_style){
+                    if(array_intersect(array('all', $layoutName),
+                        explode(',', $_style->layout)))
+                        if(!empty($_style->url)){
+                            $this->addStylePublic($_style->url);
+                        } else {
+                            $this->addStyle($_style->href);
+                        }
+                }
+            } else {
+                $_style = $this->_styles->url;
+                if(array_intersect(array('all', $layoutName),
+                    explode(',', $_style->layout)))
+                    $this->addStylePublic($_style->url);
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
             }
         }
 
         if(!empty($this->_scripts->url))  {
+<<<<<<< HEAD
             if(empty($this->_scripts->url->layout)){
                 $urls = $this->_scripts->url;
             } else {
@@ -47,6 +65,22 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
             foreach($urls as $_script){
                 if(array_intersect(array('all', $layoutName),
                     explode(',', $_script->layout)))
+=======
+
+            if(empty($this->_scripts->url->layout)){
+                foreach($this->_scripts->url as $_script){
+                    if(array_intersect(array('all', $layoutName),
+                        explode(',', $_script->layout)))
+                        if(!empty($_script->url)){
+                            $this->addScriptPublic($_script->url);
+                        } else {
+                            $this->addScript($_script->href);
+                        }
+                }
+            } else {
+                $_script = $this->_scripts->url;
+                if(array_intersect(array('all', $layoutName), explode(',', $_script->layout)))
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
                     if(!empty($_script->url)){
                         $this->addScriptPublic($_script->url);
                     } else {
@@ -122,5 +156,8 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
         return Ikantam_Option::getOptions($type);
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
 }

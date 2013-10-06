@@ -29,13 +29,20 @@
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
 <default>
         <adapter>pdo_mysql</adapter>
         <host>localhost</host>
         <username>root</username>
         <password></password>
+<<<<<<< HEAD
         <dbname>testsms</dbname>
+=======
+        <dbname>test</dbname>
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
         <prefix></prefix>
 </default>
 <!-- insert -->

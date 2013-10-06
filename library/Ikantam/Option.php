@@ -14,7 +14,11 @@ class Ikantam_Option
 
 
     public static function getOptions($type){
+<<<<<<< HEAD
         return self::getObjectOptions($type)->getArrayValue();
+=======
+        return self::getObjectOptions($type);
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
     }
 
 

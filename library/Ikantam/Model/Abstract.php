@@ -89,18 +89,28 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
     }
 
 
+<<<<<<< HEAD
     public function addObjectError($index, \Ikantam_Object_Message_Error $object){
         $this->_errors->addObject($index, $object);
+=======
+    public function addError($index, \Ikantam_Object_Message_Error $object){
+        $this->_messages[$index]['error'][] = $object;
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
         return $this;
     }
 
 
+<<<<<<< HEAD
     public function getErrorsGrouping($typeGrouping = 'fields_string'){
         return $this->_errors->getErrorsGrouping($typeGrouping);
     }
 
     public function getErrorsString(){
         return $this->_errors->getErrorsGrouping('string');
+=======
+    public function getErrorsByIndex($index){
+        return $this->_messages[$index]['error'];
+>>>>>>> d2e2a8320bc53cc686264c816a485054612e4a95
     }
 
     public function getErrorsArray(){
