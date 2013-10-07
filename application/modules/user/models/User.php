@@ -19,6 +19,15 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
+    public function isInGroupById($id){
+        foreach($this->getGroups() as $group){
+            if($id == $group->getId())
+                return true;
+        }
+        return false;
+    }
+
+
 
     /* SET PUBLIC FUNCTION */
     public function create($data){
@@ -38,14 +47,35 @@ class User_Model_User  extends Ikantam_Model_Abstract{
 
 
     public function addGroup($groupId){
-        $this->_getBackend()->addGroup($this->getId(), $groupId);
+        if(!$this->isInGroupById($groupId)){
+            $this->_getBackend()->addGroup($this->getId(), $groupId);
+            $this->_groupCollectionModel = null;
+        }
+
+        return $this;
+    }
+
+
+    public function addArrayGroupId($groups){
+        if(is_array($groups)){
+            $this->deleteAllGroups();
+            foreach($groups as $group){
+                $this->addGroup($group);
+            }
+        }
         return $this;
     }
 
 
     public function delete(){
-        $this->_getBackend()->deleteGroup($this->getId());
+        $this->deleteAllGroups();
         parent::delete();
+        return $this;
+    }
+
+
+    public function deleteAllGroups(){
+        $this->_getBackend()->deleteGroup($this->getId());
         return $this;
     }
 

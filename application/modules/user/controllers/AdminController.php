@@ -15,6 +15,10 @@ class User_AdminController extends Ikantam_Controller_Admin
         $users = new User_Model_Collections_User();
         $users->getAll();
 
+        $groups = new User_Model_Collections_Group();
+        $groups->getAll();
+
+        $this->view->groups = $groups;
         $this->view->users = $users;
     }
 
@@ -51,5 +55,23 @@ class User_AdminController extends Ikantam_Controller_Admin
         if($group->getId()){
             $group->delete();
         }
+    }
+
+
+    public function editusergroupsAction(){
+        $data = array('success' => false);
+        $userId = $this->getParam('user_id');
+        $groups = $this->getParam('groups_id', array());
+
+        $user = new User_Model_User($userId);
+
+        if(!empty($groups) && $user->getId()){
+            $user->addArrayGroupId($groups);
+            $data['groups_string'] = $user->getGroups()->getStringImplodeColumn('name', ', ');
+            $data['success'] = true;
+        } else {
+            $data['errors']['main'] = 'No Change Groups';
+        }
+        $this->_helper->json($data);
     }
 }

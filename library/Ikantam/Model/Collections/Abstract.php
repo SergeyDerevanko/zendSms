@@ -39,11 +39,17 @@ abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
 
 
     public function getStringImplodeColumn($column, $imp = ','){
+        $array = $this->getArrayColumn($column);
+        return implode($imp, $array);
+    }
+
+
+    public function getArrayColumn($column){
         $array = array();
         foreach($this as $item){
             $array[] = $item->getData($column);
         }
-        return implode($imp, $array);
+        return $array;
     }
 
 

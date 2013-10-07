@@ -28,4 +28,28 @@ body > .container > .thumbnail > .nav {
     margin-bottom: 20px;
 }
 
+.model-user-groups .modal-dialog{
+    width: 260px;
+}
+
+
+.modal-body{
+    padding: 10px;
+}
+
+.modal-footer{
+    padding: 5px;
+    margin: 0px;
+}
+
+.modal-body .alert{
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
 .w-50{ width: 50px; }
+
+
+tr td{
+    line-height: 30px !important;
+}

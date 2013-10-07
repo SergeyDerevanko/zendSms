@@ -2,9 +2,9 @@
 
 <script>
     $(function(){
-        $('body').on('click', '.btn-delete', function(){
+        $('body').on('click', '.tr-btn-delete', function(){
             var $block = $(this).closest('tr');
-
+            $(this).parent().onLoadBlock();
             $.ajax({type: 'POST',
                 datatype:"json",
                 url: publicUrl+ 'user/admin/deleteuser',
@@ -13,38 +13,57 @@
                     if(data.success){
                         $block.remove();
                     }
+                },
+                complete: function(){
+                    $block.offLoadAll();
                 }
             });
             return false;
         }) ;
 
+
+
+
         $('body').on('click', '.btn-edit', function(){
-           $('#myModal').modal('show');
+           $(this).parent().find('.modal').modal('show');
+        });
+
+
+        $('body').on('click', '.model-user-groups .btn-primary', function(){
+            var $block = $(this).closest('.modal-dialog');
+            $block.onLoadBlock();
+
+                $.ajax({type: 'POST',
+                    datatype:"json",
+                    url: publicUrl+ 'user/admin/editusergroups',
+                    data: {
+                        'user_id' :$block.closest('tr').attr('data-id'),
+                        'groups_id' : $block.find('select').val()
+                    },
+                    success: function(data){
+                        if(data.success){
+                            $block.closest('td').find('span').html(data.groups_string);
+                            $block.closest('.model-user-groups').modal('hide');
+                        } else {
+                            if(data.errors.main)
+                                $block.find('.modal-body').addFormErrorAlert(data.errors.main);
+                        }
+                    },
+                    complete: function(){
+                        $block.offLoadAll();
+                    }
+                });
+
+
+            return false;
         });
     })
 </script>
 
 <?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <?php $users = $this->users; ?>
+<div id="admin-user-manager">
 <table class="table">
     <thead>
     <tr>
@@ -59,10 +78,35 @@
         <tr data-id="<?php echo $user->getId(); ?>">
             <td><?php echo $user->getId(); ?></td>
             <td><?php echo $user->getEmail(); ?></td>
-            <td><?php echo $user->getGroups()->getStringImplodeColumn('name');?><a href="#" class="btn-edit">Edit</a></td>
-            <td><button class="btn btn-danger btn-delete">Delete</button></td>
+            <td>
+                <span><?php echo $user->getGroups()->getStringImplodeColumn('name', ', ');?></span>
+                <a href="#" class="btn-edit">Edit</a>
+
+                <div class="modal fade model-user-groups" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <select class="form-control" name="groups[]" multiple>
+                                    <?php foreach($this->groups as $group){?>
+                                        <option <?php if(in_array($group->getId(), $user->getGroups()->getArrayColumn('id'))){?> selected="selected"<?php }?> value="<?php echo $group->getId(); ?>"><?php echo $group->getName(); ?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-primary">Save</button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+            </td>
+            <td>
+                <?php echo $this->partial('blocks/btn/tr_delete.phtml', 'admin') ; ?>
+            </td>
         </tr>
         <?php }?>
     </tbody>
 </table>
+</div>
 
