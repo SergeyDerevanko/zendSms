@@ -2,13 +2,14 @@
 <configdata>
 	<styles>
         <!--<url layout="all" url="css/demo.css"/> -->
-        <url layout="admin" url="admin/bootstrap/css/bootstrap.css"/>
+        <url layout="admin" url="admin/bootstrap/css/bootstrap.min.css"/>
+        <url layout="admin" url="admin/bootstrap/css/bootstrap-theme.css"/>
         <url layout="admin" url="admin/style.css"/>
 	</styles>
     <scripts>
         <!--<url layout="all" url="js/jquery-2.0.1.min.js"/> -->
         <url layout="admin" href="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"/>
-        <url layout="admin" url="admin/bootstrap/js/bootstrap.js"/>
+        <url layout="admin" url="admin/bootstrap/js/bootstrap.min.js"/>
         <url layout="admin" url="admin/js.js"/>
     </scripts>
 </configdata>
