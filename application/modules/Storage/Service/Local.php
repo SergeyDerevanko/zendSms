@@ -8,23 +8,18 @@ class Storage_Service_Local extends Storage_Service_Abstract
         if( !empty($config['path']) ) {
             $this->_path = $config['path'];
         } else {
-            $this->_path = 'public';
+            $this->_path = 'public/storage';
         }
         parent::__construct($config);
     }
+
+
 
 
     public function getType(){
         return $this->_type;
     }
 
-    public function getBaseUrl()
-    {
-        if( null === $this->_baseUrl ) {
-            $this->_baseUrl = $this->_removeScriptName(Zend_Controller_Front::getInstance()->getBaseUrl());
-        }
-        return $this->_baseUrl;
-    }
 
 
     // Accessors

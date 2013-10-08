@@ -5,7 +5,7 @@ class Storage_IndexController extends Ikantam_Controller_Front
     {
 
         $upload = new Zend_File_Transfer();
-        $file =  $upload->getFileInfo('file');
+        $file =  $upload->getFileInfo();
 
         if($file){
             $file = $file['file'];
