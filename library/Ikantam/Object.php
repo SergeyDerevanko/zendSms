@@ -109,6 +109,7 @@ class Ikantam_Object
             case 'set' :
                 $key    = $this->_underscore(substr($method, 3));
                 $result = $this->setData($key, isset($args[0]) ? $args[0] : null);
+
                 return $result;
             
             case 'uns' :

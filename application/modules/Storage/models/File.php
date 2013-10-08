@@ -19,9 +19,12 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
     public function create($data){
         $extension = $this->extension($data['name']);
         $this->setCreationDate(time());
+        $this->setUserId($this->reactRsessionLoginUserId());
         $this->setExtension($extension);
         $this->setName($data['name']);
-        print_r(self::$_service->write($data['path'], $extension));
+        $this->setStoragePath(self::$_service->store($data['path'], $extension));
+        $this->save();
+        return $this;
     }
 
     function extension($filename) {

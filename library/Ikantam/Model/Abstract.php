@@ -142,4 +142,13 @@ abstract class Ikantam_Model_Abstract extends Ikantam_Object
     public function getOptions($type){
         return Ikantam_Option::getOptions($type);
     }
+
+
+    public function __call($methodName, $args){
+        $reaction = Ikantam_Lib_System_Reaction::call($methodName, $args);
+        if($reaction !== null)
+            return $reaction;
+
+        return parent::__call($methodName, $args);
+    }
 }

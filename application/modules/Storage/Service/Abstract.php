@@ -27,6 +27,39 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
 
 
 
+    protected function _write($file, $data){
+        if( function_exists('umask') ) {
+            $oldUmask = umask();
+            umask(0);
+        }
+
+        $code = 0;
+        if( !@file_put_contents($file, $data) ) {
+            if( is_file($file) ) {
+                @chmod($file, 0666);
+            } else if( is_dir(dirname($file)) ) {
+                @chmod(dirname($file), 0777);
+            } else {
+                @mkdir(dirname($file), 0777, true);
+            }
+
+            if( !@file_put_contents($file, $data) ) {
+                $code = 1;
+            }
+        }
+
+        if( function_exists('umask') ) {
+            umask($oldUmask);
+        }
+
+        if( 1 == $code ) {
+            throw new Zend_Exception(sprintf('Unable to write to file: $s', $file));
+        }
+    }
+
+
+
+
 
 
     protected $_identity;
@@ -124,7 +157,7 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
         }
 
         if( 1 == $code ) {
-            throw new Storage_Service_Exception('Unable to move file ('.$from.') -> ('.$to.')');
+            throw new Zend_Exception('Unable to move file ('.$from.') -> ('.$to.')');
         }
     }
 
@@ -172,48 +205,16 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
         }
 
         if( 1 == $code ) {
-            throw new Storage_Service_Exception('Unable to copy file ('.$from.') -> ('.$to.')');
+            throw new Zend_Exception('Unable to copy file ('.$from.') -> ('.$to.')');
         }
     }
 
-    protected function _write($file, $data)
-    {
-        // Change umask
-        if( function_exists('umask') ) {
-            $oldUmask = umask();
-            umask(0);
-        }
 
-        // Write
-        $code = 0;
-        if( !@file_put_contents($file, $data) ) {
-            if( is_file($file) ) {
-                @chmod($file, 0666);
-            } else if( is_dir(dirname($file)) ) {
-                @chmod(dirname($file), 0777);
-            } else {
-                @mkdir(dirname($file), 0777, true);
-            }
-
-            if( !@file_put_contents($file, $data) ) {
-                $code = 1;
-            }
-        }
-
-        // Revert umask
-        if( function_exists('umask') ) {
-            umask($oldUmask);
-        }
-
-        if( 1 == $code ) {
-            throw new Storage_Service_Exception(sprintf('Unable to write to file: $s', $file));
-        }
-    }
 
     protected function _read($file)
     {
         if( !@file_get_contents($file) ) {
-            throw new Storage_Service_Exception('Unable to read file: '.$file);
+            throw new Zend_Exception('Unable to read file: '.$file);
         }
     }
 

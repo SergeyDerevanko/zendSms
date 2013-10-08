@@ -62,7 +62,7 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
         $reaction = Ikantam_Lib_System_Reaction::call($methodName, $args);
         if($reaction !== null)
             return $reaction;
-        parent::__call($methodName, $args);
+        return parent::__call($methodName, $args);
     }
 
 

@@ -20,6 +20,28 @@ class Storage_Service_Local extends Storage_Service_Abstract
     }
 
 
+    public function store($filePath, $extension){
+
+        $_filePath = $this->generate() . '.' . $extension;
+        $path = $this->getPath() . $_filePath;
+
+        try{
+            $this->_mkdir(dirname($path));
+            $this->_copy($filePath, $path);
+            @chmod($path, 0777);
+        } catch( Exception $e ){
+            @unlink($path);
+            throw $e;
+        }
+        return $_filePath;
+    }
+
+
+
+
+
+
+
     public function getType(){
         return $this->_type;
     }
@@ -33,50 +55,35 @@ class Storage_Service_Local extends Storage_Service_Abstract
         return rtrim($this->getBaseUrl(), '/') . '/' . $model->storage_path;
     }
 
-    public function store(Storage_Model_File $model, $file)
+
+
+
+
+    public function read($filePath)
     {
-        $path = $this->getScheme()->generate($model->toArray());
-        //die($path);
-        // Copy file
-        try
-        {
-            $this->_mkdir(dirname(APPLICATION_PATH . DS . $path));
-            $this->_copy($file, APPLICATION_PATH . DS . $path);
-            @chmod(APPLICATION_PATH . DS . $path, 0777);
-        }
 
-        catch( Exception $e )
-        {
-            @unlink(APPLICATION_PATH . DS . $path);
-            throw $e;
-        }
-
-        return $path;
-    }
-
-
-
-    public function read(Storage_Model_File $model)
-    {
-        $file = APPLICATION_PATH . '/' . $model->storage_path;
-        return @file_get_contents($file);
+        return @file_get_contents($filePath);
     }
 
     public function write($path, $extension)
     {
-        $path = $this->getPath() .  $this->generate() . '.' . $extension;
+        $filePath = $this->generate() . '.' . $extension;
+        $path = $this->getPath() . $filePath;
+
         print_R($path);exit;
-        $path = $this->getScheme()->generate($model->toArray());
+
 
         try
         {
-            $this->_mkdir(dirname(APPLICATION_PATH . DS . $path));
+
+            $this->_mkdir(dirname($path));
             $this->_write(APPLICATION_PATH . DS . $path, $data);
             @chmod($path, 0777);
         }
 
         catch( Exception $e )
         {
+
             @unlink(APPLICATION_PATH . DS . $path);
             throw $e;
         }

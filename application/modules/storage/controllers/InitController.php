@@ -35,10 +35,7 @@ class Storage_InitController extends Ikantam_Controller_Installer
               `storage_path` varchar(255) NOT NULL,
               `extension` varchar(8) NOT NULL,
               `name` varchar(255) default NULL,
-              `mime_major` varchar(64) NOT NULL,
-              `mime_minor` varchar(64) NOT NULL,
               `size` bigint(20) unsigned NOT NULL,
-              `hash` varchar(64) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
               PRIMARY KEY  (`id`));
             ";
 
