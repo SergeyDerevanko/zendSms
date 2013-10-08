@@ -6,14 +6,18 @@ class Storage_Service_Local extends Storage_Service_Abstract
 
     public function __construct(array $config){
         if( !empty($config['path']) ) {
-            $this->_path = $config['path'];
+            $this->_path = APPLICATION_PATH . '/../'. $config['path'] . '/';
         } else {
-            $this->_path = 'public/storage';
+            $this->_path = APPLICATION_PATH . 'public/storage/';
         }
         parent::__construct($config);
     }
 
 
+
+    public function getPath(){
+        return $this->_path;
+    }
 
 
     public function getType(){
@@ -58,10 +62,10 @@ class Storage_Service_Local extends Storage_Service_Abstract
         return @file_get_contents($file);
     }
 
-    public function write($data)
+    public function write($path, $extension)
     {
-        // Write data
-        print_R($this->generate());exit;
+        $path = $this->getPath() .  $this->generate() . '.' . $extension;
+        print_R($path);exit;
         $path = $this->getScheme()->generate($model->toArray());
 
         try

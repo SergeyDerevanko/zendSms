@@ -17,10 +17,11 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
 
     /* SET PUBLIC FUNCTION */
     public function create($data){
+        $extension = $this->extension($data['name']);
         $this->setCreationDate(time());
-        $this->setExtension($this->extension($data['name']));
+        $this->setExtension($extension);
         $this->setName($data['name']);
-        print_r(self::$_service->write($data['path']));
+        print_r(self::$_service->write($data['path'], $extension));
     }
 
     function extension($filename) {
