@@ -16,7 +16,7 @@
  * @copyright  Copyright 2006-2010 Webligo Developments
  * @license    http://www.socialengine.net/license/
  */
-class Storage_Model_File extends Core_Model_Item_Abstract
+class Storage_Model_File222 extends Core_Model_Item_Abstract
 {
 
 

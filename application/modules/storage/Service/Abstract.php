@@ -4,7 +4,7 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
 {
     public function __construct(array $config = array()){
         if( !empty($config['service_id']) ) {
-            $this->_config = $config['service_id'];
+            $this->_config = $config;
         }
     }
 
