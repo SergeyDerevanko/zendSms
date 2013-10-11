@@ -15,6 +15,18 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
 
 
 
+    /* GET PUBLIC FUNCTION */
+    public function getHref(){
+        return self::$_service->href($this);
+    }
+
+
+    public function getMap(){
+        return self::$_service->map($this);
+    }
+
+
+
     /* SET PUBLIC FUNCTION */
     public function create($data){
         $extension = $this->extension($data['name']);
@@ -35,4 +47,6 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
     protected function beforeValid(){
         $this->setModifiedDate(time());
     }
+
+
 }

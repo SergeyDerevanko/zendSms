@@ -24,7 +24,8 @@ class User_Model_Session  extends Ikantam_Model_Abstract{
 
 
     public static function loginUserId(){
-        return self::loginUser()->getId();
+        $userId = self::loginUser()->getId();
+        return $userId ? $userId : 0;
     }
 
 

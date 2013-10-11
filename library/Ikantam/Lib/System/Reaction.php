@@ -20,11 +20,8 @@ class Ikantam_Lib_System_Reaction
                 if(!empty(self::$_reactions->{$reactName})){
                     $class = self::$_reactions->{$reactName}->class;
                     $reactMetod = lcfirst(substr($key, strlen($reactName)));
-
                     /* of the reaction */
                     if(method_exists($class, $reactMetod)) {
-                        print $class."::".$reactMetod.'()';
-                        exit;
                         return $class::$reactMetod();
                     }
 
