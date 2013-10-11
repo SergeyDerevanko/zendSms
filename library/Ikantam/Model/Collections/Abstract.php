@@ -60,7 +60,11 @@ abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
 
 
     protected function _getItemObject(){
-        return new $this->_classItem();
+        $this->beforeItemObject();
+        $object = new $this->_classItem();
+        $object = $this->reflectItemObject($object);
+        $this->afterItemObject();
+        return $object;
     }
 
 
@@ -75,4 +79,9 @@ abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
             return $reaction;
         return parent::__call($methodName, $args);
     }
+
+
+    protected function beforeItemObject(){}
+    protected function reflectItemObject($object){ return $object; }
+    protected function afterItemObject(){}
 }
