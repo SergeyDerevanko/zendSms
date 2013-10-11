@@ -6,7 +6,7 @@ class Storage_Service_Local extends Storage_Service_Abstract
 
     public function __construct(array $config){
         if( !empty($config['path']) ) {
-            $this->_path = APPLICATION_PATH . '/../'. $config['path'] . '/';
+            $this->_path = APPLICATION_PATH . '/../public/'. $config['path'] . '/';
         } else {
             $this->_path = APPLICATION_PATH . 'public/storage/';
         }
@@ -20,8 +20,16 @@ class Storage_Service_Local extends Storage_Service_Abstract
     }
 
 
-    public function store($filePath, $extension){
+    public function getPathForMap(){
+        if(!empty($this->_config['path'])){
+            return $this->_config['path'] . '/';
+        } else {
+            return 'storage/';
+        }
+    }
 
+
+    public function store($filePath, $extension){
         $_filePath = $this->generate() . '.' . $extension;
         $path = $this->getPath() . $_filePath;
 
@@ -37,6 +45,16 @@ class Storage_Service_Local extends Storage_Service_Abstract
     }
 
 
+    public function href(Storage_Model_File $model){
+        return Ikantam_Lib_Url::getPublicUrl(rtrim($this->getPathForMap(), '/') . '/' . $model->getStoragePath());
+    }
+
+
+    public function map(Storage_Model_File $model){
+        return rtrim($this->getPathForMap(), '/') . '/' . $model->getStoragePath();
+    }
+
+
 
 
 
@@ -48,12 +66,6 @@ class Storage_Service_Local extends Storage_Service_Abstract
 
 
 
-    // Accessors
-
-    public function map(Storage_Model_File $model)
-    {
-        return rtrim($this->getBaseUrl(), '/') . '/' . $model->storage_path;
-    }
 
 
 
