@@ -21,6 +21,8 @@ interface Storage_Service_Interface
 
     public function remove(Storage_Model_File $model);
 
+    public function move(Storage_Model_File $model);
+
     public function removeFile($path);
 
     public function filesize(Storage_Model_File $model);
