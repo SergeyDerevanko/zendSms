@@ -73,6 +73,16 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
     }
 
 
+    public function move(Storage_Model_File $model){
+        $storagePath = $model->getStoragePath();
+        if( !empty($storagePath)){
+            $newPath = $this->copy($model);
+            $this->_delete($this->map($model));
+            $model->setStoragePath($newPath)->save();
+        }
+    }
+
+
     protected function _delete($file){
         $code = 0;
         if( is_file($file) ) {

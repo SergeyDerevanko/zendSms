@@ -60,11 +60,17 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
     }
 
 
+    public function pathRegen(){
+        self::$_service->move($this);
+        return $this;
+    }
+
+
 
     /* PRIVATE FUNCTION */
     protected function beforeValid(){
         $this->setModifiedDate(time());
-        $this->setSize(self::$_service->filesize($this));
+        $this->setSize(filesize($this->getMap()));
     }
 
 

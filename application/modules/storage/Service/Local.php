@@ -5,12 +5,8 @@ class Storage_Service_Local extends Storage_Service_Abstract
     protected $_path;
 
     public function __construct(array $config){
-        if( !empty($config['path']) ) {
-            $this->_path = APPLICATION_PATH . '/../public/'. $this->getPathForMap();
-        } else {
-            $this->_path = APPLICATION_PATH . '/../public/' . $this->getPathForMap();
-        }
         parent::__construct($config);
+        $this->_path = APPLICATION_PATH . '/../public/' . $this->getPathForMap();
     }
 
 
@@ -70,6 +66,11 @@ class Storage_Service_Local extends Storage_Service_Abstract
     }
 
 
+    public function removeFile($path){
+        $this->_delete($path);
+    }
+
+
 
 
 
@@ -125,8 +126,5 @@ class Storage_Service_Local extends Storage_Service_Abstract
 
 
 
-    public function removeFile($path)
-    {
-        $this->_delete($path);
-    }
+
 }

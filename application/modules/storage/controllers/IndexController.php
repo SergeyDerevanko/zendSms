@@ -15,10 +15,13 @@ class Storage_IndexController extends Ikantam_Controller_Front
                 'path' => $file['tmp_name']
             );
 
-            $_file = new Storage_Model_File();
+            $_file = new Storage_Model_Image();
             $_file->create($data);
 
             $fdf = clone $_file;
+            $fdf->crop(0, 0, 100, 100);
+
+
             /*$image = Ikantam_Image::factory();
             $image->open($_file->getMap())
                 ->resize(100, 100)
