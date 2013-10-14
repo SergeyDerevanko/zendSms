@@ -23,4 +23,7 @@ interface Storage_Service_Interface
 
     public function removeFile($path);
 
+    public function filesize(Storage_Model_File $model);
+
+    public function copy(Storage_Model_File $model);
 }

@@ -26,7 +26,7 @@ class User_AdminController extends Ikantam_Controller_Admin
     public function deleteuserAction(){
         $data = array('success' => true);
 
-        $userId = $this->getParam('user_id', 0);
+        $userId = $this->getParam('id', 0);
         $user = new User_Model_User($userId);
         if($user->getId()){
             $user->delete();

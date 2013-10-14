@@ -9,11 +9,10 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
     }
 
 
-    public function generate(){
+    public function generate($extension){
         $path = '';
-        $base = 255;
-        $tmp = time();
-
+        $base  = 255;
+        $tmp = str_replace('.', '', microtime());
         do {
             $mod = ( $tmp % $base );
             $tmp -= $mod;
@@ -22,7 +21,7 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
         } while( $tmp > 0 );
 
         $path .= time();
-        return $path;
+        return $path . '.' . $extension;
     }
 
 
@@ -56,6 +55,70 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
             throw new Zend_Exception(sprintf('Unable to write to file: $s', $file));
         }
     }
+
+
+    public function filesize(Storage_Model_File $model){
+        if($size = filesize($this->map($model))){
+            return $size;
+        }
+        return 0;
+    }
+
+
+    public function remove(Storage_Model_File $model){
+        $storagePath = $model->getStoragePath();
+        if( !empty($storagePath)){
+            $this->_delete($this->map($model));
+        }
+    }
+
+
+    protected function _delete($file){
+        $code = 0;
+        if( is_file($file) ) {
+            if( !@unlink($file) ) {
+                @chmod($file, 0777);
+                if( !@unlink($file) ) {
+                    $code = 1;
+                }
+            }
+        }
+
+        if( 1 == $code ) {
+            throw new Zend_Exception('Unable to delete file: '.$file);
+        }
+    }
+
+
+    protected function _copy($from, $to){
+        if( function_exists('umask') ) {
+            $oldUmask = umask();
+            umask(0);
+        }
+
+        $code = 0;
+        if( !is_file($from) ) {
+            $code = 1;
+        } else if( !@copy($from, $to) ) {
+            @mkdir(dirname($to), 0777, true);
+            @chmod(dirname($to), 0777);
+            if( !@copy($from, $to) ) {
+                $code = 1;
+            }
+        }
+
+        if( function_exists('umask') ) {
+            umask($oldUmask);
+        }
+
+        if( 1 == $code ) {
+            throw new Zend_Exception('Unable to copy file ('.$from.') -> ('.$to.')');
+        }
+    }
+
+
+
+
 
 
 
@@ -128,7 +191,7 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
 
         // Respond
         if( 1 == $code ) {
-            throw new Storage_Service_Exception(sprintf('Could not create folder: %s', $path));
+            throw new Zend_Exception(sprintf('Could not create folder: %s', $path));
         }
     }
 
@@ -161,53 +224,9 @@ abstract class Storage_Service_Abstract implements Storage_Service_Interface
         }
     }
 
-    protected function _delete($file)
-    {
-        // Delete
-        $code = 0;
-        if( is_file($file) ) {
-            if( !@unlink($file) ) {
-                @chmod($file, 0777);
-                if( !@unlink($file) ) {
-                    $code = 1;
-                }
-            }
-        }
 
-        if( 1 == $code ) {
-            throw new Storage_Service_Exception('Unable to delete file: '.$file);
-        }
-    }
 
-    protected function _copy($from, $to)
-    {
-        // Change umask
-        if( function_exists('umask') ) {
-            $oldUmask = umask();
-            umask(0);
-        }
 
-        // Copy
-        $code = 0;
-        if( !is_file($from) ) {
-            $code = 1;
-        } else if( !@copy($from, $to) ) {
-            @mkdir(dirname($to), 0777, true);
-            @chmod(dirname($to), 0777);
-            if( !@copy($from, $to) ) {
-                $code = 1;
-            }
-        }
-
-        // Revert umask
-        if( function_exists('umask') ) {
-            umask($oldUmask);
-        }
-
-        if( 1 == $code ) {
-            throw new Zend_Exception('Unable to copy file ('.$from.') -> ('.$to.')');
-        }
-    }
 
 
 
