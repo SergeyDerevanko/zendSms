@@ -30,6 +30,7 @@
 
 
 
+
 <default>
         <adapter>pdo_mysql</adapter>
         <host>localhost</host>

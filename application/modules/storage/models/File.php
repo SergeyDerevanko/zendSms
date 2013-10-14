@@ -26,27 +26,58 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
     }
 
 
+    public function getTimeCreate(){
+        return date('Y/m/d', $this->getCreationDate());
+    }
+
+
+    public function getTimeModified(){
+        return date('Y/m/d', $this->getModifiedDate());
+    }
+
+
 
     /* SET PUBLIC FUNCTION */
     public function create($data){
+
         $extension = $this->extension($data['name']);
+
+        $storagePath = self::$_service->store($data['path'], $extension);
+
         $this->setCreationDate(time());
         $this->setUserId($this->reactRsessionLoginUserId());
         $this->setExtension($extension);
         $this->setName($data['name']);
-        $this->setStoragePath(self::$_service->store($data['path'], $extension));
+        $this->setStoragePath($storagePath);
         $this->save();
         return $this;
     }
+
+
+    public function delete(){
+        self::$_service->remove($this);
+        parent::delete();
+    }
+
+
+
+    /* PRIVATE FUNCTION */
+    protected function beforeValid(){
+        $this->setModifiedDate(time());
+        $this->setSize(self::$_service->filesize($this));
+    }
+
 
     function extension($filename) {
         return substr(strrchr($filename, '.'), 1);
     }
 
-    /* PRIVATE FUNCTION */
-    protected function beforeValid(){
-        $this->setModifiedDate(time());
+
+    public function __clone(){
+        $this->setId(null);
+        $this->setCreationDate(time());
+        $this->setStoragePath(self::$_service->copy($this));
+        $this->save();
+        return $this;
     }
-
-
 }

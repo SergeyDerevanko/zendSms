@@ -17,13 +17,18 @@ class Storage_IndexController extends Ikantam_Controller_Front
 
             $_file = new Storage_Model_File();
             $_file->create($data);
-            $image = Ikantam_Image::factory();
+
+            $fdf = clone $_file;
+            /*$image = Ikantam_Image::factory();
             $image->open($_file->getMap())
                 ->resize(100, 100)
                 ->rotate(40)
                 ->write($_file->getMap())
-                ->destroy();
-            echo $_file->getHref();
+                ->destroy();*/
+            echo "<a href='" . $_file->getHref() . "'>" . $_file->getHref() . "</a>";
         }
     }
+
+
+
 }
