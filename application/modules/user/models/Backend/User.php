@@ -10,6 +10,18 @@ class User_Model_Backend_User extends Ikantam_Model_Backend_Abstract
     }
 
 
+    public function getBySocial(\Ikantam_Model_Abstract $object, $identifier, $provider){
+        $_pref = $this->getPrefix();
+        $table = $this->getTable();
+        $select = $this->select()
+            ->join(array('user_socials' => $_pref . 'user_socials'), 'user_socials.user_id = ' . $table . '.id')
+            ->where('user_socials.type = ?', $provider)
+            ->where('user_socials.social_id = ?', $identifier);
+
+        $this->fetch($object, $select);
+    }
+
+
     public function addGroup($userId, $groupId){
         $prefix = $this->getPrefix();
         $sql = "INSERT {$prefix}user_user_group (`user_id`, `user_group_id`) VALUE (:user_id, :user_group_id)";

@@ -37,6 +37,16 @@ class User_InitController extends Ikantam_Controller_Installer
               PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
+            CREATE TABLE IF NOT EXISTS `user_socials` (
+              `id` int(11) NOT NULL AUTO_INCREMENT,
+              `user_id` int(11) NOT NULL,
+              `type` varchar(32) NOT NULL,
+              `social_id` varchar(45) NOT NULL,
+              PRIMARY KEY (`id`),
+              KEY `user_id` (`user_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
             ";
 
       $connect->query($sql);
@@ -58,6 +68,11 @@ class User_InitController extends Ikantam_Controller_Installer
             <route>admin/user/manager</route>
             <defaults module="user" controller="admin" action="manager" />
     </admin_user_manager>
+
+    <admin_user_auth>
+            <route>admin/user/auth</route>
+            <defaults module="user" controller="admin" action="auth" />
+    </admin_user_auth>
      * */
 
 

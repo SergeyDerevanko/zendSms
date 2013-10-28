@@ -2,12 +2,18 @@
 class User_Model_User  extends Ikantam_Model_Abstract{
 
     protected $_groupCollectionModel = null;
-
+    protected $_socialCollectionModel = null;
 
 
     /* FIND PUBLIC FUNCTION */
     public function getByEmail($email){
         $this->_getBackend()->getByEmail($this, $email);
+        return $this;
+    }
+
+
+    public function getBySocial($identifier, $provider){
+        $this->_getBackend()->getBySocial($this, $identifier, $provider);
         return $this;
     }
 
@@ -67,6 +73,18 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
+    public function addSocial($type, $identifier){
+        $social = new User_Model_Socials();
+        $_data = array(
+            'type' => $type,
+            'social_id' => $identifier,
+            'user_id' => $this->getId()
+        );
+        $social->create($_data);
+        $this->_socialCollectionModel = null;
+    }
+
+
     public function delete(){
         $this->deleteAllGroups();
         parent::delete();
@@ -96,12 +114,27 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
-    public function logout(){
-        $this->_getSession()->logout();
+    public function social($data){
+        $this->getBySocial($data['identifier'], $data['provider']);
+        if($this->getId()) return $this;
+
+        if(!empty($data['email']))
+            $this->getByEmail($data['email']);
+
+        if(!$this->getId()){
+            $data['conf_password'] = $data['password'] = '123123123';
+            $data['email'] = $data['email'] ? $data['email'] :  $data['identifier'] . '@' . $data['provider'] . '.com';
+            $this->create($data);
+        }
+
+        $this->addSocial($data['provider'], $data['identifier']);
+        return $this;
     }
 
 
-
+    public function logout(){
+        $this->_getSession()->logout();
+    }
 
 
     /* PRIVATE FUNCTION */
@@ -138,5 +171,14 @@ class User_Model_User  extends Ikantam_Model_Abstract{
             $this->_groupCollectionModel->getByUserId($this->getId());
         }
         return $this->_groupCollectionModel;
+    }
+
+
+    private function getSocialCollectionModel(){
+        if(empty($this->_socialCollectionModel)){
+            $this->_socialCollectionModel = new User_Model_Collections_Socials();
+            $this->_socialCollectionModel->getByUserId($this->getId());
+        }
+        return $this->_socialCollectionModel;
     }
 }

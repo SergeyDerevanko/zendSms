@@ -11,10 +11,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
     protected function _initViewHelpers() {
-        $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
-        if (null === $viewRenderer->view) {
-            $viewRenderer->initView();
-        }
+        $view = new Zend_View();
+        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Url", 'Ikantam_View_Helper_Url');
+        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Mca", 'Ikantam_View_Helper_Mca');
+        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Option", 'Ikantam_View_Helper_Option');
+
+        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
+        $viewRenderer->setView($view);
+        Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
     }
 
 
