@@ -68,7 +68,7 @@ class User_AdminController extends Ikantam_Controller_Admin
 
     public function deletegroupAction(){
         $data = array('success' => true);
-        $group = new User_Model_Group($this->getParam('group_id', 0));
+        $group = new User_Model_Group($this->getParam('id', 0));
         if($group->getId()){
             $group->delete();
         }
