@@ -12,6 +12,7 @@
 
 
     public function registrationAction(){
+
         if($this->_helper->isLogin())
             $this->redirect($this->getUrl('user/auth'));
 
@@ -26,7 +27,6 @@
                 $mess_success = 'Success';
             }
         }
-
         $this->view->mess_error = $mess_error;
         $this->view->mess_success = $mess_success;
     }
