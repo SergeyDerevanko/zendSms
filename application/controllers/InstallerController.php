@@ -65,6 +65,13 @@ class InstallerController extends Ikantam_Controller_Front
                 $mess = $explorer->testConnect();
             } elseif($this->getParam('mrg')){
                 $explorer->mrg();
+                new Ikantam_Model_Helper('view', 'ikantam', '/../library/Ikantam/Views/Helpers/Url/GetPublicUrl', 'Ikantam_View_Helper_Url_GetPublicUrl');
+                new Ikantam_Model_Helper('view', 'ikantam', '/../library/Ikantam/Views/Helpers/Url/GetRouteUrl', 'Ikantam_View_Helper_Url_GetRouteUrl');
+                new Ikantam_Model_Helper('view', 'ikantam', '/../library/Ikantam/Views/Helpers/Url/GetUrl', 'Ikantam_View_Helper_Url_GetUrl');
+
+                new Ikantam_Model_Helper('view', 'ikantam', '/../library/Ikantam/Views/Helpers/Mca', 'Ikantam_View_Helper_Mca');
+                new Ikantam_Model_Helper('view', 'ikantam', '/../library/Ikantam/Views/Helpers/Option', 'Ikantam_View_Helper_Option');
+
             } else {
                 $explorer->setConfig(
                     $this->getParam('adapter', 'pdo_mysql'),

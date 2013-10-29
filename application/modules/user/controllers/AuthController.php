@@ -2,23 +2,17 @@
 
     private $_HybridAuth;
 
-    public function init(){
-        if($this->getOption('users', 'auth_social_network', 0)){
-            $this->_HybridAuth = new User_Hybrid_Auth();
-        }
-
-    }
 
 
     public function indexAction() {
-        if(!$this->reactRsessionIsLogin())
+        if(!$this->_helper->isLogin())
             $this->redirect($this->getUrl('user/auth/login'));
         $this->view->user = $this->reactRsessionLoginUser();
     }
 
 
     public function registrationAction(){
-        if($this->reactRsessionIsLogin())
+        if($this->_helper->isLogin())
             $this->redirect($this->getUrl('user/auth'));
 
         $mess_error = false;
@@ -39,7 +33,7 @@
 
 
     public function loginAction(){
-        if($this->reactRsessionIsLogin())
+        if($this->_helper->isLogin())
             $this->redirect($this->getUrl('user/auth'));
 
         $mess_error = false;
@@ -64,7 +58,9 @@
 
 
     public function socialAction(){
+
         if($this->getOption('users', 'auth_social_network', 0)){
+            $this->_HybridAuth = new User_Hybrid_Auth();
             $provider = $this->getParam('provider', false);
             if(!$provider) $this->_helper->show404();
             try {
@@ -98,7 +94,7 @@
 
 
     public function logoutAction(){
-        $this->reactRsessionLogout();
+        $this->_helper->logout();
         $this->redirect($this->getUrl('user/auth'));
     }
 

@@ -58,6 +58,18 @@ class Ikantam_Lib_Installer_Db
           `value` text NOT NULL,
           PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+        CREATE TABLE IF NOT EXISTS `{$prefix}sys_helpers` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          `type` varchar(255) NOT NULL,
+          `module` varchar(255) NOT NULL,
+          `path` varchar(1024) NOT NULL,
+          `name` varchar(1024) NOT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+
         ";
         $this->sql($sql);
     }

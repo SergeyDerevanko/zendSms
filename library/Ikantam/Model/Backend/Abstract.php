@@ -145,8 +145,10 @@ abstract class Ikantam_Model_Backend_Abstract
 
 
     public function delete(\Ikantam_Model_Abstract $object){
-        $db = $this->getDb();
-        $db->delete($this->getTable(), 'id = ' . $object->getId());
+        if($object->getId()){
+            $db = $this->getDb();
+            $db->delete($this->getTable(), 'id = ' . $object->getId());
+        }
     }
 
 
