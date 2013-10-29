@@ -10,7 +10,6 @@ class Storage_Service_Local extends Storage_Service_Abstract
     }
 
 
-
     public function getPath(){
         return $this->_path;
     }

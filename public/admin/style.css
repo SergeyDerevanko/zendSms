@@ -2,7 +2,7 @@ body > .container{
     margin-top: 20px;
 }
 
-select, input{
+select, input[type="text"]{
     cursor: pointer;
     font-weight: normal;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -23,6 +23,8 @@ select, input{
     box-shadow: inset 0 0 10px 1px #F2F2F2;
     margin: 0;
 }
+
+
 
 body > .container > .thumbnail > .nav {
     margin-bottom: 20px;
@@ -48,8 +50,25 @@ body > .container > .thumbnail > .nav {
 }
 
 .w-50{ width: 50px; }
-
+.l-10{ margin-left: 10px !important;}
 
 tr td{
     line-height: 30px !important;
+}
+
+.accordion .panel-body .form-group input{
+    float: right;
+    width: 350px;
+}
+
+.accordion .panel-body .form-group label{
+    margin-top: 5px;
+}
+
+.accordion .panel-body .form-group{
+    margin: 5px;
+}
+
+.accordion .panel-body{
+    padding: 5px;
 }

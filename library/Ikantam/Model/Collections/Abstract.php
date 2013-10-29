@@ -73,6 +73,13 @@ abstract class Ikantam_Model_Collections_Abstract extends Ikantam_Collection
     }
 
 
+    public function delete(){
+        foreach($this as $_item){
+            $_item->delete();
+        }
+    }
+
+
     public function __call($methodName, $args){
         $reaction = Ikantam_Lib_System_Reaction::call($methodName, $args);
         if($reaction !== null)

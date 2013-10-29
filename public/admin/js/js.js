@@ -1,9 +1,3 @@
-$(function(){
-
-
-
-});
-
 var img;
 //Rotation bg-image
 function changeBgPosition(){
@@ -25,12 +19,6 @@ $.fn.extend({
 
         $(this).prepend('<div class="load-block">' +
             '<div id="loader">' +
-            '<div class="chefHat">' +
-            '<span class="hatShape left"></span>' +
-            '<span class="hatShape midl"></span> ' +
-            '<span class="hatShape right"></span>' +
-            '<span class="hatRec"></span>' +
-            '<span class="hatRec btm"></span>' +
             '</div>' +
             '</div>');
         var block = $(this).find('div.load-block');
@@ -45,7 +33,6 @@ $.fn.extend({
         });
 
         img.css('margin-top', parseInt(height/2)+'px');
-        //img.css('margin-left', parseInt(width/2-img.width()/2)+'px');
         img.css('margin-left', parseInt(width/2)+'px');
 
 
@@ -95,7 +82,6 @@ $.fn.extend({
 
 
 $.fn.extend({
-    //add 'error-field' class
     setErrorForInput:function(){
         return $(this).each(function() { $(this).addClass('error-field'); });
     },
@@ -132,10 +118,42 @@ $.fn.extend({
 });
 
 
+
+$.fn.reflectBlock = function(val){
+    if(val == 1){
+        $(this).show('blind');
+    } else {
+        $(this).hide('blind');
+    }
+}
+
+
 $(function(){
     $('tr .conf-btn').popover({
         html: true,
         placement: 'top'
+    });
+
+
+    $('.reflect-select').each(function(){
+        var $this = $(this);
+        $('.reflect_' + $this.attr('name')).reflectBlock($this.val());
+    });
+
+    $('.reflect-checkbox').each(function(){
+        var $this = $(this);
+        $('.reflect_' + $this.attr('name')).reflectBlock($(this).is(':checked'));
+    });
+
+
+    $('.reflect-checkbox').on('click', function(){
+        var $this = $(this);
+        $('.reflect_' + $this.attr('name')).reflectBlock($(this).is(':checked'));
+    });
+
+    $('.reflect-select').on('change', function(){
+        var $this = $(this);
+        $('.reflect_' + $this.attr('name')).reflectBlock($this.val());
     });
 })
 
