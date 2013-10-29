@@ -201,9 +201,9 @@ class Ikantam_Image_Adapter_Gd extends Ikantam_Image{
         $imgH = $this->_height;
 
         if( $aspect ) {
-            list($width, $height) = self::_fitImage($imgW, $imgH, $width, $height);
+            list($width, $height) = self::_fitImage($imgW, $imgH, $width, $height, true);
         }
-
+        //print_r(array($width, $height));exit;
         self::_isSafeToOpen($width, $height);
         $dst = imagecreatetruecolor($width, $height);
 

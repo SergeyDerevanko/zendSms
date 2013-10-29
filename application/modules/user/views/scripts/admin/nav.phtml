@@ -4,4 +4,10 @@
     <li class="<?php if($action == 'options') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_options'); ?>">Options</a></li>
     <li class="<?php if($action == 'groups') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_groups'); ?>">Groups</a></li>
     <li class="<?php if($action == 'auth') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_auth'); ?>">Auth</a></li>
+    <?php if($this->countTmpObject) {?>
+    <a href="<?php echo $this->getUrl('user/admin/cleartmp'); ?>" class="btn btn-warning pull-right titletip" data-placement="left" data-toggle="tooltip" title="Delete temporary files from the server">
+        Clear temp
+        <span class="label label-danger"><?php echo $this->countTmpObject; ?></span>
+    </a>
+    <?php }?>
 </ul>

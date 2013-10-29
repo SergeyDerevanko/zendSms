@@ -1,6 +1,13 @@
 <?php
 class User_AdminController extends Ikantam_Controller_Admin
 {
+    public function init(){
+        $allTmpAvater = new User_Model_Collections_Avatar();
+        $allTmpAvater->getAllTmp();
+        $this->view->countTmpObject = $allTmpAvater->count();
+    }
+
+
     public function indexAction(){
         $this->_redirect($this->getUrl('user/admin/manager'));
         exit;
@@ -9,10 +16,15 @@ class User_AdminController extends Ikantam_Controller_Admin
 
     public function optionsAction(){
         $this->initOptionForForm('users', 'default_group', 1);
+        $this->initOptionForForm('users', 'default_avatar_id', 0);
+        $ava = new User_Model_Avatar($this->getOption('users', 'default_avatar_id'));
+
+        if($post = $this->getRequest()->getPost()) $ava->unTmp();
 
         $groups = new User_Model_Collections_Group();
         $groups->getAll();
 
+        $this->view->davatar = $ava;
         $this->view->groups = $groups;
     }
 
@@ -123,5 +135,51 @@ class User_AdminController extends Ikantam_Controller_Admin
         $this->initOptionForForm('users', 'auth_myspace_keys_secret', '');
 
 
+    }
+
+
+    public function loadavatarAction(){
+        $data = array('success' => false);
+        $upload = new Zend_File_Transfer();
+        $file =  $upload->getFileInfo();
+
+        if($file){
+            $file = $file['file'];
+
+            $data = array(
+                'name' => $file['name'],
+                'path' => $file['tmp_name']
+            );
+
+            $avatar = new User_Model_Avatar();
+            $avatar->create($data);
+            $avatar->tmp();
+
+            $data['object_id'] = $avatar->getId();
+            $data['img_url'] = $avatar->getMainHref();
+            $data['success'] = true;
+        }
+
+        $this->_helper->json($data);
+    }
+
+
+    public function cropavatarAction(){
+        $data = array('success' => true);
+        $avatar = new User_Model_Avatar($this->getParam('object_id'));
+        $avatar->tmp();
+        $avatar->icrop($this->getAllParams());
+        $data['img_url'] = $avatar->getBigHref();
+        $data['object_id'] = $avatar->getId();
+        $this->_helper->json($data);
+    }
+
+
+    public function cleartmpAction(){
+        $allTmpAvater = new User_Model_Collections_Avatar();
+        $allTmpAvater->getAllTmp();
+        $allTmpAvater->delete();
+        $this->redirect($this->getUrl('user/admin'));
+        exit;
     }
 }

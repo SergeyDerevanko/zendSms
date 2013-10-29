@@ -10,15 +10,18 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     }
 
 
-    protected function _initViewHelpers() {
+    protected function _initView() {
         $view = new Zend_View();
-        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Url", 'Ikantam_View_Helper_Url');
-        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Mca", 'Ikantam_View_Helper_Mca');
-        $view->addHelperPath(APPLICATION_PATH . "/../library/Ikantam/Views/Helpers/Option", 'Ikantam_View_Helper_Option');
 
-        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
+        $helpers = new Ikantam_Model_Collections_Helper();
+        $helpers->getByType('view');
+        foreach($helpers as $_helper){
+            $view->addHelperPath(APPLICATION_PATH . $_helper->getPath(), $_helper->getName());
+        }
+
+        $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper( 'ViewRenderer' );
         $viewRenderer->setView($view);
-        Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);
+        return $view;
     }
 
 
@@ -34,15 +37,15 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         Ikantam_Model::getConnect();
     }
 
-      /*
-    
-    protected function _initActionHelpers()
-    { 
-        Zend_Controller_Action_HelperBroker::addPath(
-            'Ikantam/Controller/Action/Helper/',
-            'Ikantam_Controller_Action_Helper');
-    }*/
 
+    protected function _initControllerHelpers()
+    {
+        $helpers = new Ikantam_Model_Collections_Helper();
+        $helpers->getByType('controller');
+        foreach($helpers as $_helper){
+            Zend_Controller_Action_HelperBroker::addPath(APPLICATION_PATH . $_helper->getPath(), $_helper->getName());
+        }
+    }
 
 
 

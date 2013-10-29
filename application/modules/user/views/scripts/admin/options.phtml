@@ -1,4 +1,40 @@
-<?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
+
+<link href="<?php echo $this->getPublicUrl('ikantam/css/lib/jquery.Jcrop.css'); ?>" media="screen" rel="stylesheet" type="text/css" >
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.ui.widget.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.fileupload.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/waitforimages.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.Jcrop.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/icrop.js'); ?>"></script>
+
+
+<script type="text/javascript">
+$(function(){
+    $paret_crop = $('.crop').closest('.form-group');
+    $('.crop').iCrop({
+        boxHeight: 1000,
+        boxWidth: 310,
+        url_load: '<?php echo $this->getUrl('user/admin/loadavatar'); ?>',
+        url_crop: '<?php echo $this->getUrl('user/admin/cropavatar'); ?>',
+        start_load: function(){
+            $paret_crop.onLoadBlock();
+        },
+        end_load: function(){
+            $paret_crop.offLoadAll()
+        },
+        start_load_crop: function(){
+            $paret_crop.onLoadBlock()
+        },
+        end_load_crop: function(data){
+            $paret_crop.offLoadAll();
+            $('[name="default_avatar_id"]').val(data.object_id);
+            $('[name="object_id"]').val(data.object_id);
+        }
+
+    });
+})
+</script>
+
+<?php echo $this->partial('admin/nav.phtml', 'user', $this) ; ?>
 <?php $groups = $this->groups; ?>
 <form class="form-horizontal" role="form" method="post">
     <div class="form-group">
@@ -9,6 +45,33 @@
                 <option <?php if($group->getId() == $this->default_group) echo 'selected="selected"'?> value="<?php echo $group->getId(); ?>"><?php echo $group->getName();?></option>
                 <?php }?>
             </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <?php $avatar = $this->davatar; ?>
+        <input type="hidden" name="default_avatar_id" value="<?php echo $this->default_avatar_id; ?>">
+        <label class="col-lg-2 control-label">Default Avatar</label>
+        <div class="col-lg-10">
+            <div class="crop">
+                <input type="hidden" name="object_id" value="<?php echo $avatar->getId(); ?>">
+                <div id="crop-main-block">
+                    <img id="default-img" src="<?php echo $avatar->getBigHref(); ?>">
+                    <a href="#" id="crop-edit-btn" class="btn btn-default" name="picture_id">Edit</a>
+                </div>
+
+                <div id="block_crop_img">
+                    <img id="t_img" style="width:1px; height:1px;" src="">
+                    <img id="crop_img" src="<?php echo $avatar->getMainHref(); ?>" alt="">
+                    <div class="crop-btn">
+                        <div class="btn-select-file">
+                            <button class="btn btn-select-file btn-default">Select file</button>
+                            <input type="file" class="btn-select-file" id="load-btn" name="file">
+                        </div>
+                        <a href="#" id="save-btn" class="btn btn-success" >Save</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group">

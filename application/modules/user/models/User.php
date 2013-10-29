@@ -3,7 +3,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
 
     protected $_groupCollectionModel = null;
     protected $_socialCollectionModel = null;
-
+    protected $_avatarModel = null;
 
     /* FIND PUBLIC FUNCTION */
     public function getByEmail($email){
@@ -20,8 +20,18 @@ class User_Model_User  extends Ikantam_Model_Abstract{
 
 
     /* GET PUBLIC FUNCTION */
+    public function getSmallAvatarHref(){
+        return $this->getAvaarModel()->getSmallHref();
+    }
+
+
     public function getGroups(){
         return $this->getGroupCollectionModel();
+    }
+
+
+    public function getAvatar(){
+        return $this->getAvaarModel();
     }
 
 
@@ -37,7 +47,18 @@ class User_Model_User  extends Ikantam_Model_Abstract{
 
     /* SET PUBLIC FUNCTION */
     public function create($data){
+        $avatar = new User_Model_Avatar(!empty($data['avatar_id']) ? $data['avatar_id'] : 0);
+        if($avatar->getId()){
+            $avatar->unTmp();
+            $data['avatar_id'] = $avatar->getId();
+        } else {
+            $data['avatar_id'] = 0;
+        }
+
         $this->setEmail($data['email'])
+            ->setFirstName($data['first_name'])
+            ->setLastName($data['last_name'])
+            ->setAvatarId($data['avatar_id'])
             ->setPassword($data['password'])
             ->setConfPassword($data['conf_password'])
             ->setCreateDate(time());
@@ -87,6 +108,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
 
     public function delete(){
         $this->deleteAllGroups();
+        if($this->getAvatarId()) $this->getAvaarModel()->delete();
         parent::delete();
         return $this;
     }
@@ -137,6 +159,7 @@ class User_Model_User  extends Ikantam_Model_Abstract{
     }
 
 
+
     /* PRIVATE FUNCTION */
     public function beforeValid(){
         $this->setModifyDate(time());
@@ -181,4 +204,13 @@ class User_Model_User  extends Ikantam_Model_Abstract{
         }
         return $this->_socialCollectionModel;
     }
+
+
+    private function getAvaarModel(){
+        if(empty($this->_avatarModel)){
+            $this->_avatarModel = new User_Model_Avatar($this->getAvatarId() ? $this->getAvatarId() : $this->getOption('users', 'default_avatar_id', 0));
+        }
+        return $this->_avatarModel;
+    }
+
 }
