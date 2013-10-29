@@ -24,6 +24,13 @@
             <route>admin/user/manager</route>
             <defaults module="user" controller="admin" action="manager" />
         </admin_user_manager>
+
+        <admin_user_auth>
+            <route>admin/user/auth</route>
+            <defaults module="user" controller="admin" action="auth" />
+        </admin_user_auth>
+
+
 	</routes>
 
 </configdata>

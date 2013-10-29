@@ -1,0 +1,270 @@
+<?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
+
+<script type="text/javascript">
+    $(function(){
+
+    });
+</script>
+<form class="form-horizontal" role="form" method="post">
+<div class="form-group">
+    <label class="col-lg-2 control-label">Login via social network</label>
+    <div class="col-lg-10">
+        <select class="reflect-select" name="auth_social_network">
+            <option <?php if($this->auth_social_network == 0 ) { ?> selected="selected" <?php } ?> value="0">Off</option>
+            <option <?php if($this->auth_social_network == 1 ) { ?> selected="selected" <?php } ?> value="1">On</option>
+        </select>
+    </div>
+</div>
+
+<div class="reflect_auth_social_network">
+<div class="form-group">
+    <label class="col-lg-2 control-label">Debug mode</label>
+    <div class="col-lg-10">
+        <select name="debug_mode">
+            <option <?php if($this->debug_mode == 0 ) { ?> selected="selected" <?php } ?> value="0">Off</option>
+            <option <?php if($this->debug_mode == 1 ) { ?> selected="selected" <?php } ?> value="1">On</option>
+        </select>
+        (<?php echo APPLICATION_PATH.'/ha.log'; ?>)
+    </div>
+</div>
+
+
+<div class="form-group">
+<label class="col-lg-2 control-label"></label>
+<div class="col-lg-10">
+<input type="hidden" name="auth_yahoo" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_yahoo == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_yahoo" value="1">
+<label>Yahoo</label>
+
+<input type="hidden" name="auth_google" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_google == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_google" value="1">
+<label>Google</label>
+
+<input type="hidden" name="auth_facebook" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_facebook == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_facebook" value="1">
+<label>Facebook</label>
+
+<input type="hidden" name="auth_twitter" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_twitter == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_twitter" value="1">
+<label>Twitter</label>
+
+
+<input type="hidden" name="auth_live" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_live == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_live" value="1">
+<label>Live</label>
+
+<input type="hidden" name="auth_myspace" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_myspace == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_myspace" value="1">
+<label>MySpace</label>
+
+
+<input type="hidden" name="auth_linkedin" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_linkedin == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_linkedin" value="1">
+<label>LinkedIn</label>
+
+
+<input type="hidden" name="auth_foursquare" value="0">
+<input class="l-10 reflect-checkbox" <?php if($this->auth_foursquare == 1) {?> checked="checked"<?php }?> type="checkbox" name="auth_foursquare" value="1">
+<label>Foursquare</label>
+
+
+
+<div class="panel-group accordion" id="accordion" style="width:500px;">
+    <div class="panel panel-default">
+        <div class="panel-heading reflect_auth_yahoo">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_yahoo">
+                    Yahoo (provider: yahoo)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_yahoo" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" value="<?php echo $this->auth_yahoo_keys_id; ?>" name="auth_yahoo_keys_id" class="form-control" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_yahoo_keys_secret; ?>" name="auth_yahoo_keys_secret" class="form-control" placeholder="secret">
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="panel-heading reflect_auth_google">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_google">
+                    Google (provider: google)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_google" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" value="<?php echo $this->auth_google_keys_id; ?>" name="auth_google_keys_id" class="form-control" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_google_keys_secret; ?>" name="auth_google_keys_secret" class="form-control" placeholder="secret">
+                </div>
+
+                <div class="form-group">
+                    <label>Scope</label>
+                    <input type="text" value="<?php echo $this->auth_google_keys_scope; ?>" name="auth_google_keys_scope" class="form-control" placeholder="scope">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_facebook">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_facebook">
+                    Facebook (provider: facebook)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_facebook" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" value="<?php echo $this->auth_facebook_keys_id; ?>" name="auth_facebook_keys_id" class="form-control" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_facebook_keys_secret; ?>" name="auth_facebook_keys_secret" class="form-control" placeholder="secret">
+                </div>
+
+                <div class="form-group">
+                    <label>Scope</label>
+                    <input type="text" value="<?php echo $this->auth_facebook_keys_scope; ?>" name="auth_facebook_keys_scope" class="form-control" placeholder="scope">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_twitter">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_twitter">
+                    Twitter (provider: twitter)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_twitter" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Key</label>
+                    <input type="text" value="<?php echo $this->auth_twitter_keys_key; ?>" name="auth_twitter_keys_key" class="form-control" placeholder="key">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_twitter_keys_secret; ?>" name="auth_twitter_keys_secret" class="form-control" placeholder="secret">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_live">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_live">
+                    Live (provider: live)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_live" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" value="<?php echo $this->auth_live_keys_id; ?>" name="auth_live_keys_id" class="form-control" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_live_keys_secret; ?>" name="auth_live_keys_secret" class="form-control" placeholder="secret">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_myspace">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_myspace">
+                    MySpace (provider: myspace)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_myspace" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Key</label>
+                        <input type="text" value="<?php echo $this->auth_myspace_keys_key; ?>" name="auth_myspace_keys_key" class="form-control" placeholder="key">
+                    </div>
+                    <div class="form-group">
+                        <label>Secret</label>
+                        <input type="text" value="<?php echo $this->auth_myspace_keys_secret; ?>" name="auth_myspace_keys_secret" class="form-control" placeholder="secret">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_linkedin">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_linkedin">
+                    LinkedIn (provider: linkedin)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_linkedin" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Key</label>
+                    <input type="text" value="<?php echo $this->auth_linkedin_keys_key; ?>" name="auth_linkedin_keys_key" class="form-control" placeholder="key">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_linkedin_keys_secret; ?>" name="auth_linkedin_keys_secret" class="form-control" placeholder="secret">
+                </div>
+
+                <div class="form-group">
+                    <label>Scope</label>
+                    <input type="text" value="<?php echo $this->auth_linkedin_keys_scope; ?>" name="auth_linkedin_keys_scope" class="form-control" placeholder="scope">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel-heading reflect_auth_foursquare">
+            <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#auth_foursquare">
+                    Foursquare (provider: foursquare)
+                </a>
+            </h4>
+        </div>
+        <div id="auth_foursquare" class="panel-collapse collapse ">
+            <div class="panel-body">
+                <div class="form-group">
+                    <label>Id</label>
+                    <input type="text" value="<?php echo $this->auth_myspace_keys_id; ?>" name="auth_myspace_keys_id" class="form-control" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label>Secret</label>
+                    <input type="text" value="<?php echo $this->auth_myspace_keys_secret; ?>" name="auth_myspace_keys_secret" class="form-control" placeholder="secret">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</div>
+</form>
