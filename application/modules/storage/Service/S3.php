@@ -72,13 +72,7 @@ class Storage_Service_S3 extends Storage_Service_Abstract
 
 
 
-    /**
-     * Stores a local file in the storage service
-     *
-     * @param Zend_Form_Element_File|array|string $file Temporary local file to store
-     * @param array $params Contains iden
-     * @return string Storage type specific path (internal use only)
-     */
+
     public function store(Storage_Model_File $model, $file){
         $path = $this->getScheme()->generate($model->toArray());
 
@@ -100,12 +94,6 @@ class Storage_Service_S3 extends Storage_Service_Abstract
 
 
 
-    /**
-     * Creates a new file from data rather than an existing file
-     *
-     * @param Storage_Model_DbRow_File $model The file for operation
-     * @param string $data
-     */
     public function write(Storage_Model_File $model, $data)
     {
         $path = $this->getScheme()->generate($model->toArray());

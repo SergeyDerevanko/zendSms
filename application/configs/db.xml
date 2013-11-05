@@ -8,12 +8,13 @@
 
 
 
+
 <default>
         <adapter>pdo_mysql</adapter>
         <host>localhost</host>
         <username>root</username>
         <password></password>
-        <dbname>testsms1</dbname>
+        <dbname>testsms</dbname>
         <prefix></prefix>
 </default>
 <!-- insert -->

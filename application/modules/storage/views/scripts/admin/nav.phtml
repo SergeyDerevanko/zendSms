@@ -1,0 +1,6 @@
+<?php $action = $this->getActionName(); ?>
+<ul class="nav nav-tabs">
+    <li class="<?php if($action == 'manager') echo 'active';?>" ><a href="<?php echo $this->getUrl('storage/admin/manager'); ?>">Manager</a></li>
+    <li class="<?php if($action == 'options') echo 'active';?>" ><a href="<?php echo $this->getUrl('storage/admin/options'); ?>">Options</a></li>
+
+</ul>

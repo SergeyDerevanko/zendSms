@@ -1,6 +1,13 @@
 <?php
 class Storage_AdminController extends Ikantam_Controller_Admin
 {
+
+    public function indexAction(){
+        $this->redirect($this->getRouteUrl('storage_admin_manager'));
+        exit;
+    }
+
+
     public function optionsAction(){
         $this->initOptionForForm('storage', 'service_id', 1);
         $this->initOptionForForm('storage', 'accessKey', '');

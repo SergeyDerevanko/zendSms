@@ -51,6 +51,8 @@ body > .container > .thumbnail > .nav {
 
 .w-50{ width: 50px; }
 .l-10{ margin-left: 10px !important;}
+.top-3{top:3px;}
+.top-2{top: 2px;}
 
 tr td{
     line-height: 30px !important;
@@ -72,3 +74,66 @@ tr td{
 .accordion .panel-body{
     padding: 5px;
 }
+
+
+select  { padding-top: 0 !important;  padding-right: 0 !important; padding-bottom: 0 !important; }
+select + input[type="text"],
+select + input[type="email"],
+select + input[type="password"],
+select + input[type="tel"] {
+    margin-left: 10px;
+}
+
+select[multiple="multiple"]{
+    height: 200px;
+    width: 310px;
+}
+
+.error-field{
+    border-color: #b94a48 !important;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+}
+
+.form-admin-add form{
+    width: 700px;
+    margin: 0 auto;
+}
+
+.form-admin-add input[type="text"]{
+    width: 310px;
+}
+
+.form-admin-add input[name="financial_aid"]{
+    width: 100px;
+}
+
+.form-admin-add form .col-lg-2.control-label { width: 28.57142857142857%; }
+.form-admin-add form .form-group select[name="AID"] { width: 60px; padding-left: 3px; }
+.form-admin-add form .form-group .col-lg-10  { width: 44.28571428571429%; }
+
+.form-admin-add form .form-group .col-lg-10  select.col-lg-2 + select.col-lg-2 { margin-left: 8px; }
+.form-admin-add form .form-group .col-lg-10  select.col-lg-2  { width: 150px; }
+.form-admin-add .alert{ margin: 0 20px 20px 20px; padding: 10px; }
+header .navbar{ border-radius: 0px; }
+div.thumbnail > div{ margin: 0 10px; }
+div.container > div.thumbnail{  margin-bottom: 30px; }
+
+.form-group.add-location .col-lg-10{ padding-right: 0px; }
+.financial-aid i{ position: relative; top: 6px; left: 2px; }
+
+.table-td-avatar{ padding: 2px !important; width: 50px; }
+.table-td-avatar img{ height: 46px; }
+
+.crop #load-btn{width: 86px; height: 33px; position: absolute; top: 0px; opacity: 0; }
+.crop .jcrop-holder{ margin-bottom: 10px; display: none; }
+.crop .crop-btn{ position: relative; }
+.crop .btn-select-file{ float: left; margin-right: 5px; overflow: hidden;}
+.crop #default-img{margin-bottom: 10px; width: 310px; }
+.crop #default-img{ display: block;}
+.clear{ clear: both}
+
+
+
+
+

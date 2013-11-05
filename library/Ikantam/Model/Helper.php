@@ -25,4 +25,29 @@ class Ikantam_Model_Helper extends Ikantam_Model_Abstract {
         $this->_getBackend()->getByTypeAndName($this, $type, $name);
         return $this;
     }
+
+
+
+    /* SET PUBLIC FUNCTION */
+    public function create($data){
+        $this->setType($data['type'])
+            ->setModule($data['module'])
+            ->setPath($data['path'])
+            ->setName($data['name'])
+            ->save();
+        return $this;
+    }
+
+
+    public static function add($type, $module, $path, $name){
+        $helper = new Ikantam_Model_Helper();
+        $data = array(
+            'type' => $type,
+            'module' => $module,
+            'path' => $path,
+            'name' => $name
+        );
+        $helper->create($data);
+        return $helper;
+    }
 }

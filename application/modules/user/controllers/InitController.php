@@ -1,13 +1,8 @@
 <?php
 
-class User_InitController extends Ikantam_Controller_Installer
-{
-    public function indexAction()
-    {
-        new Ikantam_Model_Helper('controller', 'user', '/modules/user/controllers/helpers', 'Action_Helper');
-        new Ikantam_Model_Helper('view', 'user', '/modules/user/Views/Helpers/GetLoginUser', 'User_View_Helper_GetLoginUser');
-        new Ikantam_Model_Helper('view', 'user', '/modules/user/Views/Helpers/GetLoginUserId', 'User_View_Helper_GetLoginUserId');
-        new Ikantam_Model_Helper('view', 'user', '/modules/user/Views/Helpers/IsLogin', 'User_View_Helper_IsLogin');
+class User_InitController extends Ikantam_Controller_Installer {
+
+    public function indexAction(){
 
         $connect = Ikantam_Model::getConnect();
         $prefix = Ikantam_Model::getPrefix();
@@ -67,38 +62,20 @@ class User_InitController extends Ikantam_Controller_Installer
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;";
 
         $connect->query($sql);
+
+        Ikantam_Model_Helper::add('controller', 'user', '/modules/user/controllers/helpers', 'Action_Helper');
+        Ikantam_Model_Helper::add('view', 'user', '/modules/user/Views/Helpers/GetLoginUser', 'User_View_Helper_GetLoginUser');
+        Ikantam_Model_Helper::add('view', 'user', '/modules/user/Views/Helpers/GetLoginUserId', 'User_View_Helper_GetLoginUserId');
+        Ikantam_Model_Helper::add('view', 'user', '/modules/user/Views/Helpers/IsLogin', 'User_View_Helper_IsLogin');
+
+        Ikantam_Model_Router::add('user_admin_options', 'admin/user/options', 'user', 'admin', 'options');
+        Ikantam_Model_Router::add('user_admin_groups', 'admin/user/groups', 'user', 'admin', 'groups');
+        Ikantam_Model_Router::add('user_admin_manager', 'admin/user/manager', 'user', 'admin', 'manager');
+        Ikantam_Model_Router::add('user_admin_auth', 'admin/user/auth', 'user', 'admin', 'auth');
+        Ikantam_Model_Router::add('user_admin_index', 'admin/user', 'user', 'admin', 'index');
         echo 'Cood INIT';
         exit;
     }
-
-    /*
-     * ROUTES
-    <admin_user_options>
-            <route>admin/user/options</route>
-            <defaults module="user" controller="admin" action="options" />
-    </admin_user_options>
-    <admin_user_groups>
-            <route>admin/user/groups</route>
-            <defaults module="user" controller="admin" action="groups" />
-    </admin_user_groups>
-    <admin_user_manager>
-            <route>admin/user/manager</route>
-            <defaults module="user" controller="admin" action="manager" />
-    </admin_user_manager>
-
-    <admin_user_auth>
-            <route>admin/user/auth</route>
-            <defaults module="user" controller="admin" action="auth" />
-    </admin_user_auth>
-     * */
-
-
-    /*
-     * REACT
-     <Rsession>
-        <class>User_Model_Session</class>
-    </Rsession>
-     * */
 
 
     public function registrationAction(){

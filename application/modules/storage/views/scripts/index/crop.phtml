@@ -1,0 +1,38 @@
+<link href="<?php echo $this->getPublicUrl('ikantam/css/lib/jquery.Jcrop.css'); ?>" media="screen" rel="stylesheet" type="text/css" >
+
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.ui.widget.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.fileupload.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/waitforimages.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/lib/jquery.Jcrop.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo $this->getPublicUrl('ikantam/js/icrop.js'); ?>"></script>
+
+<script type="text/javascript">
+        $(function(){
+            $('.crop').iCrop({
+                url_load: '<?php echo $this->getUrl('storage/index/cropload'); ?>',
+                url_crop: '<?php echo $this->getUrl('storage/index/cropcrop'); ?>'
+            });
+        });
+</script>
+
+
+<div class="crop">
+    <input type="hidden" name="object_id" value="">
+    <div id="crop-main-block">
+        <img id="default-img" src="">
+        <a href="#" id="crop-edit-btn" class="btn btn-default">Edit</a>
+    </div>
+
+    <div id="block_crop_img">
+        <img id="t_img" style="width:1px; height:1px;" src="">
+        <img id="crop_img" src="" alt="">
+        <div class="crop-btn">
+            <div class="btn-select-file">
+                <button class="btn btn-select-file btn-default">Select file</button>
+                <input type="file" class="btn-select-file" id="load-btn" name="file">
+            </div>
+            <a href="#" id="save-btn" class="btn btn-success">Save</a>
+        </div>
+    </div>
+</div>
+

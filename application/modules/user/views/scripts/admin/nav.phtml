@@ -1,9 +1,9 @@
 <?php $action = $this->getActionName(); ?>
 <ul class="nav nav-tabs">
-    <li class="<?php if($action == 'manager') echo 'active';?>" ><a href="<?php echo $this->getRouteUrl('admin_user_manager'); ?>">Manager</a></li>
-    <li class="<?php if($action == 'options') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_options'); ?>">Options</a></li>
-    <li class="<?php if($action == 'groups') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_groups'); ?>">Groups</a></li>
-    <li class="<?php if($action == 'auth') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('admin_user_auth'); ?>">Auth</a></li>
+    <li class="<?php if($action == 'manager') echo 'active';?>" ><a href="<?php echo $this->getRouteUrl('user_admin_manager'); ?>">Manager</a></li>
+    <li class="<?php if($action == 'options') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('user_admin_options'); ?>">Options</a></li>
+    <li class="<?php if($action == 'groups') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('user_admin_groups'); ?>">Groups</a></li>
+    <li class="<?php if($action == 'auth') echo 'active';?>"><a href="<?php echo $this->getRouteUrl('user_admin_auth'); ?>">Auth</a></li>
     <?php if($this->countTmpObject) {?>
     <a href="<?php echo $this->getUrl('user/admin/cleartmp'); ?>" class="btn btn-warning pull-right titletip" data-placement="left" data-toggle="tooltip" title="Delete temporary files from the server">
         Clear temp

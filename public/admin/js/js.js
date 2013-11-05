@@ -104,10 +104,26 @@ $.fn.extend({
 
         setTimeout(function(){
             $this.find('.alert').alert('close');
-        }, 3000);
+        }, 5000);
 
         return $this;
     },
+
+    addFormSuccessAlert:function(text){
+        var $this = $(this);
+
+        $this.prepend('<div class="alert alert-block alert-success fade in">' +
+
+            '<a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>' +
+            text + '</div>');
+
+        setTimeout(function(){
+            $this.find('.alert').alert('close');
+        }, 5000);
+
+        return $this;
+    },
+
     clearFormAlert:function(){
         $(this).find('.alert').hide('blind', function(){
             $(this).remove();
@@ -155,5 +171,7 @@ $(function(){
         var $this = $(this);
         $('.reflect_' + $this.attr('name')).reflectBlock($this.val());
     });
-})
+
+    $('.titletip').tooltip();
+});
 

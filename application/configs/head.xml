@@ -3,7 +3,6 @@
 	<styles>
         <!--<url layout="all" url="css/demo.css"/> -->
         <url layout="admin" url="admin/bootstrap/css/bootstrap.min.css"/>
-        <url layout="admin" url="admin/bootstrap/css/bootstrap-theme.css"/>
         <url layout="admin" url="admin/style.css"/>
 	</styles>
     <scripts>

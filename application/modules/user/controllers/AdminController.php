@@ -9,7 +9,7 @@ class User_AdminController extends Ikantam_Controller_Admin
 
 
     public function indexAction(){
-        $this->_redirect($this->getUrl('user/admin/manager'));
+        $this->_redirect($this->getRouteUrl('user_admin_manager'));
         exit;
     }
 
@@ -19,7 +19,10 @@ class User_AdminController extends Ikantam_Controller_Admin
         $this->initOptionForForm('users', 'default_avatar_id', 0);
         $ava = new User_Model_Avatar($this->getOption('users', 'default_avatar_id'));
 
-        if($post = $this->getRequest()->getPost()) $ava->unTmp();
+        if($post = $this->getRequest()->getPost()) {
+            $ava->unTmp();
+            $this->_redirect($this->getRouteUrl('user_admin_options'));
+        }
 
         $groups = new User_Model_Collections_Group();
         $groups->getAll();
@@ -179,7 +182,7 @@ class User_AdminController extends Ikantam_Controller_Admin
         $allTmpAvater = new User_Model_Collections_Avatar();
         $allTmpAvater->getAllTmp();
         $allTmpAvater->delete();
-        $this->redirect($this->getUrl('user/admin'));
+        $this->redirect($this->getRouteUrl('user_admin_manager'));
         exit;
     }
 }

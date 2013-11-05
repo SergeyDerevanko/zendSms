@@ -4,11 +4,6 @@ interface Storage_Service_Interface
     public function store($pathFile, $extension);
 
 
-
-
-
-
-
     public function getIdentity();
 
     public function getType();

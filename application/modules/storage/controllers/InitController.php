@@ -2,12 +2,12 @@
 
 class Storage_InitController extends Ikantam_Controller_Installer
 {
-  public function indexAction()
-  {
-      $connect = Ikantam_Model::getConnect();
-      $prefix = Ikantam_Model::getPrefix();
+    public function indexAction()
+    {
+        $connect = Ikantam_Model::getConnect();
+        $prefix = Ikantam_Model::getPrefix();
 
-      $sql = "
+        $sql = "
             DROP TABLE IF EXISTS `{$prefix}storage_services`;
             CREATE TABLE IF NOT EXISTS `{$prefix}storage_services` (
               `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -29,8 +29,8 @@ class Storage_InitController extends Ikantam_Controller_Installer
 
               `parent_type` varchar(32) CHARACTER SET latin1 COLLATE latin1_general_ci default NULL,
               `user_id` int(10) unsigned default NULL,
-              `creation_date` datetime NOT NULL,
-              `modified_date` datetime NOT NULL,
+              `creation_date` int(10) NOT NULL,
+              `modified_date` int(10) NOT NULL,
 
               `storage_path` varchar(255) NOT NULL,
               `extension` varchar(8) NOT NULL,
@@ -39,10 +39,14 @@ class Storage_InitController extends Ikantam_Controller_Installer
               PRIMARY KEY  (`id`));
             ";
 
-      $connect->query($sql);
-      echo 'Cood INIT';
-      exit;
-  }
+        Ikantam_Model_Router::add('storage_admin_index', 'admin/storage', 'storage', 'admin', 'index');
+        Ikantam_Model_Router::add('storage_admin_manager', 'admin/storage/manager', 'storage', 'admin', 'manager');
+        Ikantam_Model_Router::add('storage_admin_options', 'admin/storage/options', 'storage', 'admin', 'options');
+
+        $connect->query($sql);
+        echo 'Cood INIT';
+        exit;
+    }
 
     /*
      * ROUTES

@@ -57,7 +57,7 @@ $(function(){
                 <input type="hidden" name="object_id" value="<?php echo $avatar->getId(); ?>">
                 <div id="crop-main-block">
                     <img id="default-img" src="<?php echo $avatar->getBigHref(); ?>">
-                    <a href="#" id="crop-edit-btn" class="btn btn-default" name="picture_id">Edit</a>
+                    <a href="#" id="crop-edit-btn" class="btn btn-default" name="picture_id"><i class="top-2 glyphicon glyphicon-edit"></i> Edit</a>
                 </div>
 
                 <div id="block_crop_img">
@@ -65,10 +65,10 @@ $(function(){
                     <img id="crop_img" src="<?php echo $avatar->getMainHref(); ?>" alt="">
                     <div class="crop-btn">
                         <div class="btn-select-file">
-                            <button class="btn btn-select-file btn-default">Select file</button>
+                            <button class="btn btn-select-file btn-default"><i class="top-2 glyphicon glyphicon-download-alt"></i> Select file</button>
                             <input type="file" class="btn-select-file" id="load-btn" name="file">
                         </div>
-                        <a href="#" id="save-btn" class="btn btn-success" >Save</a>
+                        <a href="#" id="save-btn" class="btn btn-success" ><i class="top-2 glyphicon glyphicon-floppy-save"></i> Save</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@ $(function(){
     </div>
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary"><i class="top-2 glyphicon glyphicon-floppy-saved"></i> Save</button>
         </div>
     </div>
 </form>

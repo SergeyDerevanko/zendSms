@@ -14,13 +14,15 @@
     <?php echo $this->headScript(); ?>
     
 </head>
-
+<?php $moduleName = $this->getModuleName(); ?>
 <body>
+
     <div class="container">
         <div class="navbar navbar-default">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Test</a></li>
+                    <li <?php if($moduleName == 'user') {?>class="active" <?php }?>><a href="<?php echo $this->getRouteUrl('user_admin_index')?>">Users</a></li>
+                    <li <?php if($moduleName == 'storage') {?>class="active" <?php }?>><a href="<?php echo $this->getRouteUrl('storage_admin_index')?>">Storage</a></li>
                 </ul>
             </div>
         </div>

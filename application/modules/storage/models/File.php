@@ -66,6 +66,18 @@ class Storage_Model_File  extends Ikantam_Model_Abstract{
     }
 
 
+    public function tmp(){
+        $this->setFlagTmp(1)->save();
+        return $this;
+    }
+
+
+    public function unTmp(){
+        $this->setFlagTmp(0)->save();
+        return $this;
+    }
+
+
 
     /* PRIVATE FUNCTION */
     protected function beforeValid(){

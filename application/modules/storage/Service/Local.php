@@ -56,7 +56,11 @@ class Storage_Service_Local extends Storage_Service_Abstract
 
 
     public function href(Storage_Model_File $model){
-        return Ikantam_Lib_Url::getPublicUrl(rtrim($this->getPathForMap(), '/') . '/' . $model->getStoragePath());
+        if($model->getStoragePath()){
+            return Ikantam_Lib_Url::getPublicUrl(rtrim($this->getPathForMap(), '/') . '/' . $model->getStoragePath());
+        } else {
+            return '';
+        }
     }
 
 

@@ -70,6 +70,16 @@ class Ikantam_Lib_Installer_Db
         ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 
+        CREATE TABLE IF NOT EXISTS `{$prefix}sys_routers` (
+          `id` int(11) NOT NULL AUTO_INCREMENT,
+          `name` varchar(255) NOT NULL,
+          `url` varchar(1024) NOT NULL,
+          `module` varchar(255) NOT NULL,
+          `controller` varchar(255) NOT NULL,
+          `action` varchar(255) NOT NULL,
+          PRIMARY KEY (`id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
         ";
         $this->sql($sql);
     }
