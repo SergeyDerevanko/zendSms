@@ -39,7 +39,7 @@
     })
 </script>
 
-<?php echo $this->partial('admin/nav.phtml', 'user') ; ?>
+<?php echo $this->partial('admin/nav.phtml', 'user', $this) ; ?>
 
 <?php $users = $this->users; ?>
 <div id="admin-user-manager">
@@ -47,19 +47,23 @@
     <thead>
     <tr>
         <th class="w-50">#</th>
+        <th></th>
         <th>Email</th>
         <th>Groups</th>
         <th>Action</th>
     </tr>
     </thead>
     <tbody>
+
         <?php foreach($users as $user){?>
+            <?php $user->getSmallAvatarHref(); ?>
         <tr data-id="<?php echo $user->getId(); ?>">
             <td><?php echo $user->getId(); ?></td>
+            <td class="table-td-avatar"><img src="<?php echo $user->getSmallAvatarHref(); ?>" alt=""></td>
             <td><?php echo $user->getEmail(); ?></td>
             <td>
-                <span><?php echo $user->getGroups()->getStringImplodeColumn('name', ', ');?></span>
-                <a href="#" class="btn-edit">Edit</a>
+                <a href="#" class="btn btn-edit btn-info"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <span> <?php echo $user->getGroups()->getStringImplodeColumn('name', ', ');?></span>
 
                 <div class="modal fade model-user-groups" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">

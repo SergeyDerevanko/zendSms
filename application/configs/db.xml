@@ -1,28 +1,5 @@
 <?xml version='1.0'?>
 <configdata>
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -36,7 +13,7 @@
         <host>localhost</host>
         <username>root</username>
         <password></password>
-        <dbname>testsms</dbname>
+        <dbname>testsms1</dbname>
         <prefix></prefix>
 </default>
 <!-- insert -->

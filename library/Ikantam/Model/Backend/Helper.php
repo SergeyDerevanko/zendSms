@@ -1,8 +1,7 @@
 <?php
+class Ikantam_Model_Backend_Helper extends Ikantam_Model_Backend_Abstract {
 
-class Ikantam_Model_Backend_Option extends Ikantam_Model_Backend_Abstract
-{
-    protected $_table = 'sys_options';
+    protected $_table = 'sys_helpers';
 
 
 
@@ -21,20 +20,5 @@ class Ikantam_Model_Backend_Option extends Ikantam_Model_Backend_Abstract
             ->where('type = ?', $type)
             ->where('name = ?', $name);
         $this->fetch($object, $select);
-    }
-
-
-    public function getObjectOptions($type){
-        return Ikantam_Option::getObjectOptions($type);
-    }
-
-
-    public function getOption($type, $name, $value = ''){
-        return Ikantam_Option::getOption($type, $name, $value);
-    }
-
-
-    public function getOptions($type){
-        return Ikantam_Option::getOptions($type);
     }
 }

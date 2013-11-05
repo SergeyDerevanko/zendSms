@@ -1,15 +1,46 @@
-<h2>Login</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 block-auth login-auth">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Login</h3>
+                    <p>If you have an account with us, please log in.</p>
 
-<?php if($this->mess_error){?>
-<h3 style="color: red;"><?php echo $this->mess_error; ?></h3>
-<?php }?>
+                    <form method="post" action="" class="form-horizontal">
 
-<?php if($this->mess_success){?>
-<h3 style="color: #adff2f;"><?php echo $this->mess_success; ?></h3>
-<?php }?>
- <a href="<?php echo $this->getUrl('user/auth/registration'); ?>">registration</a>
-<form method="post" action="">
-    <input type="text" name="email" placeholder="email">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="login">
-</form>
+
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Email Address</label>
+                            <div class="col-lg-6">
+                                <input type="email" name="email" class="form-control" placeholder="Email Address">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="col-lg-5 control-label">Password</label>
+                            <div class="col-lg-6">
+                                <input type="password" name="password" class="form-control" placeholder="Password">
+                            </div>
+                        </div>
+
+
+
+
+                        <button class="btn btn-form btn-success pull-right">Login</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="login-s">
+                        <h3>or</h3>
+                        <a class="btn btn-primary">Sign Up with Facebook</a>
+                        <a class="btn btn-primary">Sign Up with Twitter</a>
+                        <a class="btn btn-primary">SIgn Up with LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

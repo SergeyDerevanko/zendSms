@@ -3,6 +3,8 @@
     public function indexAction() {
         $user = new User_Model_Session();
         $user = $user->loginUser();
-
     }
+
+
+
 }

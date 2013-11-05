@@ -78,7 +78,9 @@ abstract class Ikantam_Controller_Front extends Zend_Controller_Action
 
 
     public function addStylePublic($path){
-        $extension = end(explode('.', end(explode('/', $path))));
+        $extension = explode("/", $path);
+        $extension = explode(".", end($extension) );
+        $extension = end($extension);
         if($extension == 'less'){
             $_path = substr($path, 0, -strlen($extension)) . 'css';
             $modTime = filemtime($path);

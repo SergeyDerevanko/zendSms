@@ -1,0 +1,24 @@
+<?php $dbConfig = $this->dbConfig; ?>
+<?php $controllers = $this->controllers; ?>
+
+<?php if($this->mess) {?>
+<h2><?php echo $this->mess; ?></h2>
+<?php }?>
+<form method="post" action="#">
+    Host : <br><input type="text" name="host" value="<?php echo $dbConfig->host; ?>"><br><br>
+    Username : <br><input type="text" name="username" value="<?php echo $dbConfig->username; ?>"><br><br>
+    Password :<br> <input type="text" name="password" value="<?php echo $dbConfig->password; ?>"><br><br>
+    DbName : <br><input type="text" name="dbname" value="<?php echo $dbConfig->dbname; ?>"><br><br>
+
+    <input type="submit" value="save">
+</form>
+
+<form method="post" action="">
+    <input type="hidden" name="test" value="1">
+    <input type="submit" value="Test Connect">
+</form>
+
+<form method="post" action="">
+    <input type="hidden" name="mrg" value="1">
+    <input type="submit" value="Load core sql">
+</form>
