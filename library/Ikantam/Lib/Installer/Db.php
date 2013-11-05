@@ -51,7 +51,7 @@ class Ikantam_Lib_Installer_Db
     public function mrg(){
         $prefix = Ikantam_Model::getPrefix();
         $sql = "
-        CREATE TABLE IF NOT EXISTS `{$prefix}sys_option` (
+        CREATE TABLE IF NOT EXISTS `{$prefix}sys_options` (
           `id` int(11) NOT NULL AUTO_INCREMENT,
           `type` text NOT NULL,
           `name` text NOT NULL,

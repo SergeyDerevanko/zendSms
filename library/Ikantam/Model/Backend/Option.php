@@ -2,7 +2,7 @@
 
 class Ikantam_Model_Backend_Option extends Ikantam_Model_Backend_Abstract
 {
-    protected $_table = 'sys_option';
+    protected $_table = 'sys_options';
 
 
 
